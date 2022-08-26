@@ -2,6 +2,7 @@ package com.bancodelt.java.program.interfaces;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,7 +19,8 @@ public class ViewOpenAppController implements Initializable {
     private Button btnEntrar;
     @FXML
     private TextField txtFCPF;
-
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -27,4 +29,14 @@ public class ViewOpenAppController implements Initializable {
         // TODO
     }    
     
+    @FXML
+    private void AcaoBtnEntrar(ActionEvent event) {
+        CheckACC();
+    }
+    
+    private void CheckACC() {
+        if (txtFCPF.getText().isEmpty()) {
+            
+        }
+    }
 }
