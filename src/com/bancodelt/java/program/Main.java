@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     
-    private static Stage programLogin;
+    private static Stage program;
     
     private static final String directoryJavaInterfaces = "/com/bancodelt/java/program/interfaces/";
     
@@ -32,9 +32,14 @@ public class Main extends Application {
     }
 
     // Método para acessar as "cenas" do programa
-    public static Stage getProgramLogin() {
-        return programLogin;
+    public static Stage getProgram() {
+        return program;
     }
+
+    public static void setProgram(Stage programLogin) {
+        Main.program = programLogin;
+    }
+    
     
     // Método para obter os diretórios
     public static String getDirectoryJavaInterfaces() {
