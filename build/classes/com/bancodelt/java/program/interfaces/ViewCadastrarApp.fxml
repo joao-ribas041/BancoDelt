@@ -22,9 +22,9 @@
             <Label layoutX="106.0" layoutY="504.0" text="Conta" />
             <DatePicker fx:id="dpNascimento" layoutX="112.0" layoutY="260.0" promptText="DD/MM/AAAA" />
             <TextField fx:id="txtFSenha" layoutX="89.0" layoutY="334.0" prefHeight="35.0" prefWidth="218.0" />
-            <Label fx:id="txtFSenha" layoutX="91.0" layoutY="315.0" text="Senha" />
+            <Label layoutX="91.0" layoutY="315.0" text="Senha" />
             <TextField fx:id="txtFConfirmSenha" layoutX="89.0" layoutY="403.0" prefHeight="35.0" prefWidth="218.0" />
-            <Label fx:id="txtFSenha1" layoutX="91.0" layoutY="383.0" text="Confirmar senha" />
+            <Label layoutX="91.0" layoutY="383.0" text="Confirmar senha" />
             <TextField fx:id="txtFEmail" layoutX="91.0" layoutY="89.0" prefHeight="35.0" prefWidth="218.0" promptText="Digite seu e-mail" />
             <Label layoutX="93.0" layoutY="70.0" text="Email" />
          </children>
