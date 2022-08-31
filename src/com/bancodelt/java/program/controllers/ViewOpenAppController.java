@@ -24,11 +24,10 @@ public class ViewOpenAppController implements Initializable {
     @FXML
     private TextField txtFCPF;
     
-    public String CPFinput;
+    public static String CPFinput;
     
     Main m = new Main();
-    AlertWarningPrototype alertaAviso = new AlertWarningPrototype();
-    Parent telaCadastro;
+    AlertWarningPrototype alertaAviso;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -39,14 +38,12 @@ public class ViewOpenAppController implements Initializable {
     private void AcaoBtnEntrar(ActionEvent event) throws Exception {
         CheckACC();
     }
-    
     @FXML
     private void acaoBtnEnter(KeyEvent e) throws Exception {
         if(e.getCode() == KeyCode.ENTER){
             CheckACC();
         }
     }
-
     @FXML
     private void acaoTXTFEnter(KeyEvent e) throws Exception {
         if(e.getCode() == KeyCode.ENTER){
@@ -56,16 +53,16 @@ public class ViewOpenAppController implements Initializable {
     
         private void CheckACC() throws Exception {            
         if (txtFCPF.getText().isEmpty()) {
-            alertaAviso.setTitulo("Alerta");
-            alertaAviso.setMsgPrincipal("Informe o CPF!");
-            alertaAviso.setSubMsg("O campo CPF esta vazio. Por favor informe o CPF");
-            alertaAviso.exibirAlert();
+            alertaAviso = new AlertWarningPrototype("Alerta", "Informe o CPF!", "O campo CPF esta vazio. Por favor informe o CPF");
         } else {
             CPFinput = txtFCPF.getText();
             
             // se conta existe, entrar direto, caso contrario ir para criar conta
             if(CPFinput.equalsIgnoreCase("138")) {
                 System.out.println("CPF VALIDO, entrando...");
+                setCPFinput(txtFCPF.getText());
+                Main.getProgram().close();
+                m.rodarTela(new Stage(), "ViewPrincipalApp.fxml");
                 // criar txtF para senha e mostrar txtF caso conta ja exista
                 // ou fazer menu personalizado para login de conta existente
             } else {
@@ -75,4 +72,12 @@ public class ViewOpenAppController implements Initializable {
             }
         }
     }
+
+    public static void setCPFinput(String CPFinput) {
+        ViewOpenAppController.CPFinput = CPFinput;
+    }
+
+    public static String getCPFinput() {
+        return CPFinput;
+    }    
 }
