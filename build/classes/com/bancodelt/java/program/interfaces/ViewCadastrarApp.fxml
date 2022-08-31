@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -21,9 +22,9 @@
             <Label layoutX="114.0" layoutY="197.0" text="Data de nascimento" />
             <Label layoutX="106.0" layoutY="504.0" text="Conta" />
             <DatePicker fx:id="dpNascimento" layoutX="112.0" layoutY="260.0" promptText="DD/MM/AAAA" />
-            <TextField fx:id="txtFSenha" layoutX="89.0" layoutY="334.0" prefHeight="35.0" prefWidth="218.0" />
+            <PasswordField fx:id="txtFSenha" layoutX="90.0" layoutY="335.0" prefHeight="35.0" prefWidth="218.0" />
             <Label layoutX="91.0" layoutY="315.0" text="Senha" />
-            <TextField fx:id="txtFConfirmSenha" layoutX="89.0" layoutY="403.0" prefHeight="35.0" prefWidth="218.0" />
+            <PasswordField fx:id="txtFConfirmSenha" layoutX="89.0" layoutY="403.0" prefHeight="35.0" prefWidth="218.0" />
             <Label layoutX="91.0" layoutY="383.0" text="Confirmar senha" />
             <TextField fx:id="txtFEmail" layoutX="91.0" layoutY="89.0" prefHeight="35.0" prefWidth="218.0" promptText="Digite seu e-mail" />
             <Label layoutX="93.0" layoutY="70.0" text="Email" />

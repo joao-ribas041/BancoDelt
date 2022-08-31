@@ -16,4 +16,12 @@ public abstract class Conta {
     Date dataCriacaoAcc;
     double saldo;
     byte tipo;
+    
+    void sacar() {
+        
+    }
+    
+    void depositar() {
+        
+    }
 }
