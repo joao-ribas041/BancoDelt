@@ -6,11 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author João Ribas
- */
-
 public class Main extends Application {
     
     private static Stage program;

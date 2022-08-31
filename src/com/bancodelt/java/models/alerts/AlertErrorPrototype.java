@@ -1,9 +1,5 @@
 package com.bancodelt.java.models.alerts;
 
-/**
- *
- * @author João Ribas
- */
 public class AlertErrorPrototype extends AlertPrototype {
     
     protected AlertErrorPrototype(AlertErrorPrototype alertErrorPrototype) {

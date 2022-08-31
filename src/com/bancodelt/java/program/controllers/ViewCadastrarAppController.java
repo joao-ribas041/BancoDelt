@@ -12,11 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author João Ribas
- */
 public class ViewCadastrarAppController implements Initializable {
 
     @FXML
