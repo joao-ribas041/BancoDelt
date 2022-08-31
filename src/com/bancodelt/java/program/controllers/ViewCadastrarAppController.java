@@ -1,5 +1,6 @@
 package com.bancodelt.java.program.controllers;
 
+import com.bancodelt.java.program.Main;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -30,13 +32,21 @@ public class ViewCadastrarAppController implements Initializable {
     @FXML
     private ComboBox<?> cbEstiloDaConta;
 
+    Main m = new Main();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
     @FXML
-    private void AcaoBtnEntrar(ActionEvent event) {
+    private void AcaoBtnEntrar(ActionEvent event) throws Exception {
+        CheckVariaveis();
+    }
+    
+    private void CheckVariaveis() throws Exception {
+        Main.getProgram().close();
+        m.rodarTela(new Stage(), "ViewPrincipalApp.fxml");
     }
     
 }

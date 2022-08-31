@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
     
     private static Stage program;
-    
     private static final String directoryJavaInterfaces = "/com/bancodelt/java/program/interfaces/";
     
     public static void main(String[] args) {
@@ -23,19 +22,21 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource(Main.getDirectoryJavaInterfaces() + "ViewOpenApp.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+        rodarTela(stage, "ViewOpenApp.fxml");
     }
-
+    
+    public void rodarTela(Stage stg, String telafxml) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource(Main.getDirectoryJavaInterfaces() + telafxml));
+        Scene scene = new Scene(root);
+        stg.setScene(scene);
+        setProgram(stg);
+        stg.show();
+    }
+    
     // Método para acessar as "cenas" do programa
     public static Stage getProgram() {
         return program;
     }
-
     public static void setProgram(Stage programLogin) {
         Main.program = programLogin;
     }
