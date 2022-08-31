@@ -4,11 +4,12 @@ public abstract class Conta {
     
     int numeroAgencia;
     String numeroConta;
+    String CPF;
     String nomeTitular;
     String senhaTitular;
-    String CPF;
+    String dataNascimento;
+    String dataCriacaoAcc;
     double saldo;
-    double dataCriacaoAcc;
     byte tipo;
     
 }
