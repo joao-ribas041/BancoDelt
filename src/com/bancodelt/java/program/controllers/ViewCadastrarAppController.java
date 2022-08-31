@@ -9,10 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 public class ViewCadastrarAppController implements Initializable {
 
@@ -34,8 +32,6 @@ public class ViewCadastrarAppController implements Initializable {
     private TextField txtFSenha;
     @FXML
     private TextField txtFConfirmSenha;
-    @FXML
-    private Label txtFSenha1;
     @FXML
     private TextField txtFEmail;
     

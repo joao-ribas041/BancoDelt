@@ -18,6 +18,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         rodarTela(stage, "ViewOpenApp.fxml");
+        // Testar a tela de cadastro (comentar linha de cima).
+        //rodarTela(stage, "ViewCadastrarApp.fxml");
     }
     
     public void rodarTela(Stage stg, String telafxml) throws Exception {
