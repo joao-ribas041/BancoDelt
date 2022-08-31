@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -17,8 +19,6 @@ public class ViewCadastrarAppController implements Initializable {
     @FXML
     private AnchorPane TelaCriarAccApp;
     @FXML
-    private Button btnEntrar;
-    @FXML
     private TextField txtFCPF;
     @FXML
     private TextField txtFNome;
@@ -26,7 +26,19 @@ public class ViewCadastrarAppController implements Initializable {
     private TextField txtFNascimento;
     @FXML
     private ComboBox<?> cbEstiloDaConta;
-
+    @FXML
+    private Button btnCriarAcc;
+    @FXML
+    private DatePicker dpNascimento;
+    @FXML
+    private TextField txtFSenha;
+    @FXML
+    private TextField txtFConfirmSenha;
+    @FXML
+    private Label txtFSenha1;
+    @FXML
+    private TextField txtFEmail;
+    
     Main m = new Main();
     
     @Override
@@ -40,8 +52,10 @@ public class ViewCadastrarAppController implements Initializable {
     }
     
     private void CheckVariaveis() throws Exception {
-        Main.getProgram().close();
-        m.rodarTela(new Stage(), "ViewPrincipalApp.fxml");
+        
+        
+        //Main.getProgram().close();
+        //m.rodarTela(new Stage(), "ViewPrincipalApp.fxml");
     }
     
 }

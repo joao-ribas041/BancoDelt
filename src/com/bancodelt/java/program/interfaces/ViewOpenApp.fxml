@@ -8,8 +8,8 @@
    <children>
       <AnchorPane fx:id="TelaPrincipalApp" layoutX="1.0" prefHeight="650.0" prefWidth="400.0">
          <children>
-            <Button fx:id="btnEntrar" layoutX="164.0" layoutY="333.0" mnemonicParsing="false" onAction="#AcaoBtnEntrar" prefHeight="35.0" prefWidth="70.0" text="Entrar" />
-            <TextField fx:id="txtFCPF" layoutX="112.0" layoutY="282.0" prefHeight="35.0" prefWidth="175.0" promptText="Digite seu CPF" />
+            <Button fx:id="btnEntrar" layoutX="164.0" layoutY="333.0" mnemonicParsing="false" onAction="#AcaoBtnEntrar" onKeyPressed="#acaoBtnEnter" prefHeight="35.0" prefWidth="70.0" text="Entrar" />
+            <TextField fx:id="txtFCPF" layoutX="112.0" layoutY="282.0" onKeyPressed="#acaoTXTFEnter" prefHeight="35.0" prefWidth="175.0" promptText="Digite seu CPF" />
          </children>
       </AnchorPane>
    </children>
