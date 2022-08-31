@@ -2,6 +2,14 @@ package com.bancodelt.java.models.alerts;
 
 public class AlertWarningPrototype  extends AlertPrototype{
     
+    public AlertWarningPrototype(String titulo, String msgPrincipal, String subMsg) {
+        a1.setTitle(titulo);
+        a1.setHeaderText(msgPrincipal);
+        a1.setContentText(subMsg);
+        System.out.println("Alerta " + msgPrincipal);
+        a1.showAndWait();
+    }
+    
     protected AlertWarningPrototype(AlertWarningPrototype alertWarningPrototype) {
         this.titulo = alertWarningPrototype.getTitulo();
         this.msgPrincipal = alertWarningPrototype.getMsgPrincipal();

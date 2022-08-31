@@ -14,21 +14,24 @@
          <children>
             <Button fx:id="btnCriarAcc" layoutX="151.0" layoutY="584.0" mnemonicParsing="false" onAction="#AcaoBtnEntrar" prefHeight="35.0" prefWidth="95.0" text="Criar Conta" />
             <TextField fx:id="txtFCPF" layoutX="112.0" layoutY="27.0" prefHeight="35.0" prefWidth="175.0" promptText="Digite seu CPF" />
-            <TextField fx:id="txtFNome" layoutX="90.0" layoutY="152.0" prefHeight="35.0" prefWidth="217.0" promptText="Digite seu nome completo" />
-            <TextField fx:id="txtFNascimento" layoutX="112.0" layoutY="217.0" prefHeight="35.0" prefWidth="175.0" promptText="DD/MM/AAAA" />
+            <TextField fx:id="txtFNome" layoutX="89.0" layoutY="209.0" onKeyPressed="#txtFnomeEnter" prefHeight="35.0" prefWidth="217.0" promptText="Digite seu nome completo" />
+            <TextField fx:id="txtFNascimento" layoutX="111.0" layoutY="274.0" prefHeight="35.0" prefWidth="175.0" promptText="DD/MM/AAAA" />
             <ComboBox fx:id="cbEstiloDaConta" layoutX="104.0" layoutY="524.0" prefHeight="26.0" prefWidth="190.0" promptText="Selecione o tipo da conta" />
             <Label layoutX="112.0" layoutY="5.0" text="CPF" />
-            <Label layoutX="92.0" layoutY="132.0" text="Nome" />
-            <Label layoutX="114.0" layoutY="197.0" text="Data de nascimento" />
+            <Label layoutX="91.0" layoutY="189.0" text="Nome" />
+            <Label layoutX="113.0" layoutY="254.0" text="Data de nascimento" />
             <Label layoutX="106.0" layoutY="504.0" text="Conta" />
-            <DatePicker fx:id="dpNascimento" layoutX="112.0" layoutY="260.0" promptText="DD/MM/AAAA" />
-            <PasswordField fx:id="txtFSenha" layoutX="90.0" layoutY="335.0" prefHeight="35.0" prefWidth="218.0" promptText="Digite sua senha" />
-            <Label layoutX="91.0" layoutY="315.0" text="Senha" />
-            <PasswordField fx:id="txtFConfirmSenha" layoutX="89.0" layoutY="403.0" prefHeight="35.0" prefWidth="218.0" promptText="Confirme sua senha" />
-            <Label layoutX="91.0" layoutY="383.0" text="Confirmar senha" />
-            <TextField fx:id="txtFEmail" layoutX="91.0" layoutY="89.0" prefHeight="35.0" prefWidth="218.0" promptText="Digite seu e-mail" />
+            <DatePicker fx:id="dpNascimento" layoutX="111.0" layoutY="317.0" promptText="DD/MM/AAAA" />
+            <PasswordField fx:id="txtFSenha" layoutX="89.0" layoutY="392.0" onKeyPressed="#txtFsenhaEnter" prefHeight="35.0" prefWidth="218.0" promptText="Digite sua senha" />
+            <Label layoutX="90.0" layoutY="372.0" text="Senha" />
+            <PasswordField fx:id="txtFConfirmSenha" layoutX="88.0" layoutY="460.0" onKeyPressed="#txtFconfirmarSenhaEnter" prefHeight="35.0" prefWidth="218.0" promptText="Confirme sua senha" />
+            <Label layoutX="90.0" layoutY="440.0" text="Confirmar senha" />
+            <TextField fx:id="txtFEmail" layoutX="91.0" layoutY="89.0" onKeyPressed="#txtFEmailEnter" prefHeight="35.0" prefWidth="218.0" promptText="Digite seu e-mail" />
             <Label layoutX="93.0" layoutY="70.0" text="Email" />
+            <TextField fx:id="txtFddd" layoutX="92.0" layoutY="148.0" onKeyPressed="#txtFdddEnter" prefHeight="35.0" prefWidth="46.0" promptText="DDD" />
+            <Label layoutX="94.0" layoutY="129.0" text="Telefone" />
          </children>
       </AnchorPane>
+      <TextField fx:id="txtFnumeroTelefone" layoutX="148.0" layoutY="148.0" onKeyPressed="#txtFnumeroEnter" prefHeight="35.0" prefWidth="161.0" promptText="Digite seu numero" />
    </children>
 </AnchorPane>
