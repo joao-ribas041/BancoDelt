@@ -1,8 +1,13 @@
 package com.bancodelt.java.program.controllers;
 
+import com.bancodelt.java.models.EstiloAcc;
 import com.bancodelt.java.program.Main;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,8 +28,6 @@ public class ViewCadastrarAppController implements Initializable {
     @FXML
     private TextField txtFNascimento;
     @FXML
-    private ComboBox<?> cbEstiloDaConta;
-    @FXML
     private Button btnCriarAcc;
     @FXML
     private DatePicker dpNascimento;
@@ -34,12 +37,16 @@ public class ViewCadastrarAppController implements Initializable {
     private TextField txtFConfirmSenha;
     @FXML
     private TextField txtFEmail;
+    @FXML
+    private ComboBox<EstiloAcc> cbEstiloDaConta;
+    private List<EstiloAcc> estilosAcc = new ArrayList<>();
+    private ObservableList<EstiloAcc> obsEstiloAcc;
     
     Main m = new Main();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        iniciarCategorias();
     }    
 
     @FXML
@@ -47,9 +54,17 @@ public class ViewCadastrarAppController implements Initializable {
         CheckVariaveis();
     }
     
+    public void iniciarCategorias() {
+        EstiloAcc estilo0 = new EstiloAcc(0, "Conta Poupança");
+        EstiloAcc estilo1 = new EstiloAcc(1, "Conta Corrente");
+        estilosAcc.add(estilo0);
+        estilosAcc.add(estilo1);
+        
+        obsEstiloAcc = FXCollections.observableArrayList(estilosAcc);
+        cbEstiloDaConta.setItems(obsEstiloAcc);
+    }
+    
     private void CheckVariaveis() throws Exception {
-        
-        
         //Main.getProgram().close();
         //m.rodarTela(new Stage(), "ViewPrincipalApp.fxml");
     }
