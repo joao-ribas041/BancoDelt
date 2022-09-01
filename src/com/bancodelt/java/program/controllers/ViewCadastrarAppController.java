@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -65,28 +66,40 @@ public class ViewCadastrarAppController implements Initializable {
     }
     // CODIGO REPETIDO, CRIAR IF COM OPERADOR OU PARA TODAS AS TECLAS MAIS TARDE.
     @FXML
-    private void txtFnomeEnter(KeyEvent event) throws Exception {
-        CheckVariaveis();
+    private void txtFnomeEnter(KeyEvent e) throws Exception {
+        if(e.getCode() == KeyCode.ENTER) {
+            CheckVariaveis();
+        }
     }
     @FXML
-    private void txtFsenhaEnter(KeyEvent event) throws Exception {
-        CheckVariaveis();
+    private void txtFsenhaEnter(KeyEvent e) throws Exception {
+        if(e.getCode() == KeyCode.ENTER) {
+            CheckVariaveis();
+        }
     }
     @FXML
-    private void txtFconfirmarSenhaEnter(KeyEvent event) throws Exception {
-        CheckVariaveis();
+    private void txtFconfirmarSenhaEnter(KeyEvent e) throws Exception {
+        if(e.getCode() == KeyCode.ENTER) {
+            CheckVariaveis();
+        }
     }
     @FXML
-    private void txtFEmailEnter(KeyEvent event) throws Exception {
-        CheckVariaveis();
+    private void txtFEmailEnter(KeyEvent e) throws Exception {
+        if(e.getCode() == KeyCode.ENTER) {
+            CheckVariaveis();
+        }
     }
     @FXML
-    private void txtFdddEnter(KeyEvent event) throws Exception {
-        CheckVariaveis();
+    private void txtFdddEnter(KeyEvent e) throws Exception {
+        if(e.getCode() == KeyCode.ENTER) {
+            CheckVariaveis();
+        }
     }
     @FXML
-    private void txtFnumeroEnter(KeyEvent event) throws Exception {
-        CheckVariaveis();
+    private void txtFnumeroEnter(KeyEvent e) throws Exception {
+        if(e.getCode() == KeyCode.ENTER) {
+            CheckVariaveis();
+        }
     }
     
     
@@ -96,6 +109,44 @@ public class ViewCadastrarAppController implements Initializable {
             alertaAviso = new AlertWarningPrototype("Alerta", "Informe o E-mail!", "O campo E-mail está vazio, por favor informe-o.");
         } else {
             if(txtFEmail.getText().contains("@") && txtFEmail.getText().contains(".com")) {
+                
+                if(txtFddd.getText().isEmpty()) {
+                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu DDD", "O campo DDD está vazio, por favor informe-o.");
+                } else {
+                    
+                    if(txtFnumeroTelefone.getText().isEmpty()) {
+                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu numero", "O campo numero de telefone está vazio, por favor informe-o.");
+                    } else {
+                        
+                        if(txtFNome.getText().isEmpty()) {
+                            alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu nome", "O campo nome está vazio, por favor informe-o.");
+                        } else {
+                            
+                            if(txtFNome.getText().length() < 3 || txtFNome.getText().length() >= 50) {
+                                alertaAviso = new AlertWarningPrototype("Alerta", "Nome invalido", "O nome informado é invalido, por favor informe um nome legitmo.");
+                                System.out.println("");
+                                System.out.println("Menor que 3 e maior que 50");
+                            } else {
+                                
+                                //implementar if da data
+                                
+                                if(txtFSenha.getText().isEmpty() || txtFConfirmSenha.getText().isEmpty()){
+                                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe a senha", "O campo senha está vazio, por favor informe-o.");
+                                } else {
+                                    
+                                    
+                                    
+                                }
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
                 
             } else {
                 alertaAviso = new AlertWarningPrototype("Alerta", "E-mail invalido.", "O campo E-mail é invalido, por favor informe um E-mail legitmo.");

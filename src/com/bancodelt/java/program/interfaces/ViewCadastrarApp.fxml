@@ -30,8 +30,8 @@
             <Label layoutX="93.0" layoutY="70.0" text="Email" />
             <TextField fx:id="txtFddd" layoutX="92.0" layoutY="148.0" onKeyPressed="#txtFdddEnter" prefHeight="35.0" prefWidth="46.0" promptText="DDD" />
             <Label layoutX="94.0" layoutY="129.0" text="Telefone" />
+            <TextField fx:id="txtFnumeroTelefone" layoutX="148.0" layoutY="148.0" onKeyPressed="#txtFnumeroEnter" prefHeight="35.0" prefWidth="161.0" promptText="Digite seu numero" />
          </children>
       </AnchorPane>
-      <TextField fx:id="txtFnumeroTelefone" layoutX="148.0" layoutY="148.0" onKeyPressed="#txtFnumeroEnter" prefHeight="35.0" prefWidth="161.0" promptText="Digite seu numero" />
    </children>
 </AnchorPane>
