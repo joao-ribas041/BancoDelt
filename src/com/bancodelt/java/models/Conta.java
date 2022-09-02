@@ -5,7 +5,7 @@ import java.util.Date;
 public abstract class Conta {
     
     int numeroAgencia;
-    String numeroConta;
+    int numeroConta;
     String CPF;
     String email;
     String ddd;

@@ -7,7 +7,7 @@ public class ContaPoupanca extends Conta {
     public ContaPoupanca() {
     }
     
-    public ContaPoupanca(int numeroAgencia, String numeroConta, String CPF, String email, String ddd, String numeroCelular, String nomeTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+    public ContaPoupanca(int numeroAgencia, int numeroConta, String CPF, String email, String ddd, String numeroCelular, String nomeTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
         this.CPF = CPF;
