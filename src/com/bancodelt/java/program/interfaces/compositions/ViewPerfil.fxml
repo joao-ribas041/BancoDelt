@@ -10,26 +10,32 @@
    <children>
       <FlowPane fx:id="FPConta" alignment="TOP_CENTER">
          <children>
+            <VBox fx:id="VBoxAgencia" alignment="CENTER" prefHeight="75.0" prefWidth="150.0">
+               <children>
+                  <Label fx:id="lblAgencia" text="Agencia:" />
+                  <TextField fx:id="txtFAgencia" editable="false" prefHeight="26.0" prefWidth="122.0" />
+               </children>
+            </VBox>
             <VBox fx:id="VBoxConta" alignment="CENTER" prefHeight="75.0" prefWidth="150.0">
                <children>
                   <Label fx:id="lblConta" text="Conta:" />
                   <TextField fx:id="txtFConta" editable="false" prefHeight="26.0" prefWidth="138.0" />
-                  <VBox fx:id="VBoxAgencia" alignment="CENTER" prefHeight="75.0" prefWidth="150.0">
-                     <children>
-                        <Label fx:id="lblAgencia" text="Agencia:" />
-                        <TextField fx:id="txtFAgencia" editable="false" prefHeight="26.0" prefWidth="122.0" />
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </children>
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="186.0" prefWidth="294.0">
          <children>
-            <VBox fx:id="VBoxEmail" prefHeight="75.0" prefWidth="100.0">
+            <VBox fx:id="VBoxEmail" prefHeight="75.0" prefWidth="263.0">
                <children>
                   <Label fx:id="lblEmail" text="E-mail:" />
                   <TextField fx:id="txtFEmail" />
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxDDD" prefHeight="74.0" prefWidth="70.0">
+               <children>
+                  <Label fx:id="lblDDD" text="DDD:" />
+                  <TextField fx:id="txtFDDD" prefHeight="26.0" prefWidth="66.0" />
                </children>
             </VBox>
             <VBox fx:id="VBoxNumero" prefHeight="67.0" prefWidth="150.0">
@@ -38,15 +44,9 @@
                   <TextField fx:id="txtFNumero" />
                </children>
             </VBox>
-            <VBox fx:id="VBoxDDD" prefHeight="73.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="lblDDD" text="DDD:" />
-                  <TextField fx:id="txtFDDD" />
-               </children>
-            </VBox>
          </children>
       </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="309.0">
          <children>
             <VBox fx:id="VBoxCPF" alignment="CENTER" prefHeight="80.0" prefWidth="100.0">
                <children>
@@ -60,10 +60,20 @@
                   <TextField fx:id="txtFNomeTitular" />
                </children>
             </VBox>
-            <VBox fx:id="VBoxGenero" alignment="CENTER" prefHeight="60.0" prefWidth="300.0">
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="VBoxGenero" alignment="CENTER" prefHeight="60.0" prefWidth="124.0">
                <children>
                   <Label fx:id="lblGenero" text="Genero" />
                   <ComboBox fx:id="cbGenero" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblNascimento" text="Data de nascimento" />
+                  <TextField fx:id="txtFNascimento" />
                </children>
             </VBox>
          </children>
