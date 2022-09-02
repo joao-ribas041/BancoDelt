@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class ContaCorrente extends Conta {
 
-    ContaCorrente() {
+    public ContaCorrente() {
     }
     
-    ContaCorrente(int numeroAgencia, String numeroConta, String CPF, String email, int ddd, String numeroCelular,String nomeTitular, String senhaTitular, Date dataNascimento, Date dataCriacaoAcc, double saldo) {
+    public ContaCorrente(int numeroAgencia, String numeroConta, String CPF, String email, String ddd, String numeroCelular,String nomeTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
         this.CPF = CPF;

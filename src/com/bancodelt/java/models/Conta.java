@@ -8,12 +8,12 @@ public abstract class Conta {
     String numeroConta;
     String CPF;
     String email;
-    int ddd;
+    String ddd;
     String numeroCelular;
     String nomeTitular;
     String senhaTitular;
-    Date dataNascimento;
-    Date dataCriacaoAcc;
+    String dataNascimento;
+    String dataCriacaoAcc;
     double saldo;
     byte tipo;
     
