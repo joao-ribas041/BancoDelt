@@ -11,6 +11,7 @@ public abstract class Conta {
     String ddd;
     String numeroCelular;
     String nomeTitular;
+    String generoTitular;
     String senhaTitular;
     String dataNascimento;
     String dataCriacaoAcc;

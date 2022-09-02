@@ -7,7 +7,7 @@ public class ContaCorrente extends Conta {
     public ContaCorrente() {
     }
     
-    public ContaCorrente(int numeroAgencia, int numeroConta, String CPF, String email, String ddd, String numeroCelular,String nomeTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+    public ContaCorrente(int numeroAgencia, int numeroConta, String CPF, String email, String ddd, String numeroCelular,String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
         this.CPF = CPF;
@@ -15,6 +15,7 @@ public class ContaCorrente extends Conta {
         this.ddd = ddd;
         this.numeroCelular = numeroCelular;
         this.nomeTitular = nomeTitular;
+        this.generoTitular = generoTitular;
         this.senhaTitular = senhaTitular;
         this.dataNascimento = dataNascimento;
         this.dataCriacaoAcc = dataCriacaoAcc;
