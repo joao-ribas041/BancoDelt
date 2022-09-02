@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewPerfilController">
+   <children>
+      <FlowPane fx:id="FPConta" alignment="TOP_CENTER">
+         <children>
+            <VBox fx:id="VBoxConta" alignment="CENTER" prefHeight="75.0" prefWidth="150.0">
+               <children>
+                  <Label fx:id="lblConta" text="Conta:" />
+                  <TextField fx:id="txtFConta" editable="false" prefHeight="26.0" prefWidth="138.0" />
+                  <VBox fx:id="VBoxAgencia" alignment="CENTER" prefHeight="75.0" prefWidth="150.0">
+                     <children>
+                        <Label fx:id="lblAgencia" text="Agencia:" />
+                        <TextField fx:id="txtFAgencia" editable="false" prefHeight="26.0" prefWidth="122.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" prefHeight="186.0" prefWidth="294.0">
+         <children>
+            <VBox fx:id="VBoxEmail" prefHeight="75.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblEmail" text="E-mail:" />
+                  <TextField fx:id="txtFEmail" />
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxNumero" prefHeight="67.0" prefWidth="150.0">
+               <children>
+                  <Label fx:id="lblNumero" text="Numero:" />
+                  <TextField fx:id="txtFNumero" />
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxDDD" prefHeight="73.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblDDD" text="DDD:" />
+                  <TextField fx:id="txtFDDD" />
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="VBoxCPF" alignment="CENTER" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblCPF" text="CPF:" />
+                  <TextField fx:id="txtFCPF" />
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxNome" alignment="CENTER" prefHeight="100.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblNomeTitular" text="Nome:" />
+                  <TextField fx:id="txtFNomeTitular" />
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxGenero" alignment="CENTER" prefHeight="60.0" prefWidth="300.0">
+               <children>
+                  <Label fx:id="lblGenero" text="Genero" />
+                  <ComboBox fx:id="cbGenero" prefWidth="150.0" />
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+   </children>
+</FlowPane>
