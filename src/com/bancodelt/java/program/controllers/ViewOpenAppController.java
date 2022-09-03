@@ -9,15 +9,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ViewOpenAppController implements Initializable {
     
-    @FXML
-    private AnchorPane TelaPrincipalApp;
     @FXML
     private Button btnEntrar;
     @FXML
@@ -27,6 +26,12 @@ public class ViewOpenAppController implements Initializable {
     
     Main m = new Main();
     AlertWarningPrototype alertaAviso;
+    @FXML
+    private ImageView btnVoltar;
+    @FXML
+    private ImageView btnMinimizar;
+    @FXML
+    private ImageView btnFechar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -37,13 +42,11 @@ public class ViewOpenAppController implements Initializable {
     private void AcaoBtnEntrar(ActionEvent event) throws Exception {
         CheckACC();
     }
-    @FXML
     private void acaoBtnEnter(KeyEvent e) throws Exception {
         if(e.getCode() == KeyCode.ENTER){
             CheckACC();
         }
     }
-    @FXML
     private void acaoTXTFEnter(KeyEvent e) throws Exception {
         if(e.getCode() == KeyCode.ENTER){
             CheckACC();
@@ -79,4 +82,28 @@ public class ViewOpenAppController implements Initializable {
     public static String getCPFinput() {
         return CPFinput;
     }    
+
+    @FXML
+    private void voltarMouseInteracao(MouseEvent event) {
+    }
+
+    @FXML
+    private void voltarMouseClick(MouseEvent event) {
+    }
+
+    @FXML
+    private void minimizarMouseInteracao(MouseEvent event) {
+    }
+
+    @FXML
+    private void minimizarMouseClick(MouseEvent event) {
+    }
+
+    @FXML
+    private void fecharMouseInteracao(MouseEvent event) {
+    }
+
+    @FXML
+    private void fecharMouseClick(MouseEvent event) {
+    }
 }
