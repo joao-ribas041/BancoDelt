@@ -15,37 +15,13 @@
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="800.0">
+            <HBox prefHeight="30.0" prefWidth="800.0">
                <children>
-                  <HBox prefHeight="30.0" prefWidth="400.0" spacing="10.0">
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding>
-                     <children>
-                        <ImageView fx:id="btnVoltar" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#voltarMouseClick" onMouseEntered="#voltarMouseInteracao" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/Icons/RETURN.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="400.0" spacing="10.0">
-                     <children>
-                        <ImageView fx:id="btnMinimizar" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#minimizarMouseClick" onMouseEntered="#minimizarMouseInteracao" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/Icons/MINIMIZE.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="btnFechar" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#fecharMouseClick" onMouseEntered="#fecharMouseInteracao" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/Icons/EXIT.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </HBox>
+                  <ImageView fx:id="btnVoltar" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../resources/icons/RETURN.png" />
+                     </image>
+                  </ImageView>
                </children>
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
@@ -65,7 +41,7 @@
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnEntrar" mnemonicParsing="false" onAction="#AcaoBtnEntrar" styleClass="bntBase" text="SEGUIR" textAlignment="CENTER">
+                        <Button fx:id="btnSeguir" mnemonicParsing="false" onAction="#AcaoBtnSeguir" styleClass="bntBase" text="SEGUIR" textAlignment="CENTER">
                            <font>
                               <Font size="14.0" />
                            </font>
