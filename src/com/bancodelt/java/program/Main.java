@@ -1,13 +1,12 @@
 package com.bancodelt.java.program;
 
-import java.io.InputStream;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Main extends Application {
     
@@ -26,10 +25,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        rodarTela(stage, "ViewOpenApp.fxml");
+        switchTelas(stage, "ViewOpenApp.fxml");
     }
     
-    public void rodarTela(Stage stg, String telafxml) throws Exception {
+    public void switchTelas(Stage stg, String telafxml) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(Main.getDirectoryJavaInterfaces() + telafxml));
         Scene scene = new Scene(root);
         //stg.initStyle(StageStyle.UNDECORATED);

@@ -17,7 +17,7 @@
          <children>
             <HBox prefHeight="30.0" prefWidth="800.0">
                <children>
-                  <ImageView fx:id="btnVoltar" disable="true" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnVoltar" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#btnVoltarClick" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../resources/icons/RETURN.png" />
                      </image>
@@ -47,7 +47,7 @@
                      <children>
                         <ImageView fitHeight="184.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/Images/PERFIL.png" />
+                              <Image url="@../../../resources/images/PERFIL.png" />
                            </image>
                         </ImageView>
                         <TextField fx:id="txtFCPF" blendMode="SRC_ATOP" cache="true" editable="false" promptText="Informe seu CPF" styleClass="txtFBase">
