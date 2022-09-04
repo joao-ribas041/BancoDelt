@@ -2,7 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -45,21 +48,43 @@
                   </FlowPane>
                   <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" vgap="15.0">
                      <children>
-                        <ImageView fitHeight="184.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/images/PERFIL.png" />
-                           </image>
-                        </ImageView>
-                        <TextField fx:id="txtFCPF" blendMode="SRC_ATOP" cache="true" editable="false" promptText="Informe seu CPF" styleClass="txtFBase">
+                        <TextField fx:id="txtFCPF" blendMode="SRC_ATOP" cache="true" editable="false" prefHeight="45.0" prefWidth="250.0" promptText="Informe seu CPF" styleClass="txtFBase">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtFSenha" blendMode="SRC_ATOP" cache="true" editable="false" promptText="Insira sua senha" styleClass="txtFBase">
+                        <TextField fx:id="txtFEmail" blendMode="SRC_ATOP" cache="true" promptText="Digite seu e-mail" styleClass="txtFBase">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
+                        <HBox spacing="10.0">
+                           <children>
+                              <TextField fx:id="txtFddd" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="60.0" promptText="DDD" styleClass="txtFBase">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtFnumeroTelefone" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="180.0" promptText="Digite seu numero" styleClass="txtFBase">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <DatePicker fx:id="dpNascimento" prefHeight="45.0" prefWidth="250.0" promptText="dd/MM/yyyy" styleClass="txtFBase" />
+                        <ComboBox fx:id="cbGenero" prefHeight="45.0" prefWidth="250.0" promptText="Selecione o genero" styleClass="txtFBase" />
+                        <PasswordField fx:id="txtFSenha" prefHeight="45.0" prefWidth="250.0" promptText="Digite sua senha" styleClass="txtFBase">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </PasswordField>
+                        <PasswordField fx:id="txtFConfirmSenha" prefHeight="45.0" prefWidth="250.0" promptText="Confirme sua senha" styleClass="txtFBase">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </PasswordField>
+                        <ComboBox fx:id="cbEstiloDaConta" prefHeight="45.0" prefWidth="250.0" promptText="Selecione o tipo da conta" styleClass="txtFBase" />
                         <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#AcaoBtnRegistrar" styleClass="bntBase" text="REGISTRAR" textAlignment="CENTER">
                            <font>
                               <Font size="14.0" />
