@@ -37,6 +37,19 @@
     -fx-text-fill: black;
 }
 
+.btnMenu{
+    -fx-background-color: transparent;
+    -fx-border-color: #5459ff;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-text-fill: white;
+}
+.btnMenu:hover{
+    -fx-background-color: transparent;
+    -fx-border-color: #5459ff;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-text-fill: white;
+}
+
 .txtFBase{
     -fx-background-color: transparent;
     -fx-border-color: #5459ff;

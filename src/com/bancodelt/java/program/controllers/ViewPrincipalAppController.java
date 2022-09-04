@@ -4,31 +4,37 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class ViewPrincipalAppController implements Initializable {
 
     @FXML
-    private AnchorPane TelaPrincipalApp;
-    @FXML
     private Label lblSaldo;
     @FXML
-    private Label lblPix;
+    private Label lblRS;
     @FXML
-    private Label lblTransferir;
+    private ImageView btnViewHide;
     @FXML
-    private Label lblDepositar;
+    private AnchorPane Painel;
     @FXML
-    private Label lblExtrato;
+    private VBox MenuSlider;
+    @FXML
+    private Button btnHome;
+    @FXML
+    private Button btnSacar;
+    @FXML
+    private Button btnDepositar;
+    @FXML
+    private Button btnPix;
+    @FXML
+    private Button btnDeslogar;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
-
-    
 }
