@@ -2,13 +2,15 @@ package com.bancodelt.java.program.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class ViewPrincipalAppController implements Initializable {
 
@@ -19,9 +21,7 @@ public class ViewPrincipalAppController implements Initializable {
     @FXML
     private ImageView btnViewHide;
     @FXML
-    private AnchorPane Painel;
-    @FXML
-    private VBox MenuSlider;
+    private AnchorPane MenuSlider;
     @FXML
     private Button btnHome;
     @FXML
@@ -32,6 +32,12 @@ public class ViewPrincipalAppController implements Initializable {
     private Button btnPix;
     @FXML
     private Button btnDeslogar;
+    @FXML
+    private ImageView imgLogo;
+    private ImageView btnSideBar;
+    @FXML
+    private AnchorPane PainelCentral;
+    private ImageView btnSideBarClose;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

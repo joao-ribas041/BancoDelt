@@ -20,11 +20,6 @@
                   <Image url="@../../../resources/LogoInvert.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnSideBar" fitHeight="30.0" fitWidth="30.0" layoutX="761.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icons/MENU.png" />
-               </image>
-            </ImageView>
             <HBox alignment="CENTER_RIGHT" layoutX="169.0" prefHeight="110.0" prefWidth="518.0" spacing="5.0">
                <children>
                   <Label fx:id="lblRS" text="R$">
@@ -52,38 +47,42 @@
          </children>
       </AnchorPane>
    </top>
-   <right>
-      <VBox fx:id="MenuSlider" alignment="TOP_CENTER" prefHeight="490.0" prefWidth="115.0" spacing="10.0" styleClass="Base1" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnHome" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Home" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnSacar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Sacar" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnDepositar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Depositar" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnPix" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Pix" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnDeslogar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="SAIR" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-   </right>
    <center>
-      <AnchorPane fx:id="Painel" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="PainelCentral" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <left>
+      <AnchorPane fx:id="MenuSlider" prefHeight="490.0" prefWidth="115.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="490.0" prefWidth="115.0" spacing="10.0" styleClass="Base1">
+               <children>
+                  <Button fx:id="btnHome" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Home" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSacar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Sacar" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDepositar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Depositar" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnPix" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Pix" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDeslogar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="SAIR" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>
