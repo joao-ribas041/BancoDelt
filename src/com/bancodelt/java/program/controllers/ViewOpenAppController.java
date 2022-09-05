@@ -2,81 +2,89 @@ package com.bancodelt.java.program.controllers;
 
 import com.bancodelt.java.models.alerts.AlertWarningPrototype;
 import com.bancodelt.java.program.Main;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewOpenAppController implements Initializable {
-    
+
     @FXML
-    private AnchorPane TelaPrincipalApp;
-    @FXML
-    private Button btnEntrar;
+    private ImageView btnVoltar;
     @FXML
     private TextField txtFCPF;
+    @FXML
+    private Button btnSeguir;
     
     public static String CPFinput;
     
-    Main m = new Main();
     AlertWarningPrototype alertaAviso;
+    Main m = new Main();
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txtFCPF.setOnKeyPressed((event) -> {
+            if(event.getCode() == KeyCode.ENTER){
+                try {
+                    seguir();
+                } catch (IOException ex) {
+                    Logger.getLogger(ViewOpenAppController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        });
     } 
-    
+       
     @FXML
-    private void AcaoBtnEntrar(ActionEvent event) throws Exception {
-        CheckACC();
-    }
-    @FXML
-    private void acaoBtnEnter(KeyEvent e) throws Exception {
-        if(e.getCode() == KeyCode.ENTER){
-            CheckACC();
-        }
-    }
-    @FXML
-    private void acaoTXTFEnter(KeyEvent e) throws Exception {
-        if(e.getCode() == KeyCode.ENTER){
-            CheckACC();
-        }
+    private void AcaoBtnSeguir(ActionEvent event) throws IOException {
+        seguir();
     }
     
-        private void CheckACC() throws Exception {            
-        if (txtFCPF.getText().isEmpty()) {
+    private int CheckCPF(){
+        if(txtFCPF.getText().isEmpty()){
             alertaAviso = new AlertWarningPrototype("Alerta", "Informe o CPF!", "O campo CPF esta vazio. Por favor informe o CPF");
         } else {
             CPFinput = txtFCPF.getText();
-            
-            // se conta existe, entrar direto, caso contrario ir para criar conta
-            if(CPFinput.equalsIgnoreCase("138")) {
-                System.out.println("CPF VALIDO, entrando...");
+            if(txtFCPF.getText().equals("1234")) {
                 setCPFinput(txtFCPF.getText());
-                Main.getProgram().close();
-                m.rodarTela(new Stage(), "ViewPrincipalApp.fxml");
-                // criar txtF para senha e mostrar txtF caso conta ja exista
-                // ou fazer menu personalizado para login de conta existente
+                return 1;
             } else {
-                System.out.println("CPF INVALIDO, criar conta");
-                Main.getProgram().close();
-                m.rodarTela(new Stage(), "ViewCadastrarApp.fxml");
+                setCPFinput(txtFCPF.getText());
+                return 2;
             }
         }
+        return 0;
     }
+    
+    private void seguir() throws IOException{
+        if(CheckCPF() == 1) {
+            Main.getProgram().close();
+            m.switchTelas(new Stage(), "ViewLoginApp.fxml");
+        } else if(CheckCPF() == 2) {
+            Main.getProgram().close();
+            m.switchTelas(new Stage(), "ViewRegisterApp.fxml");
+        }
+    } 
 
     public static void setCPFinput(String CPFinput) {
         ViewOpenAppController.CPFinput = CPFinput;
     }
-
     public static String getCPFinput() {
         return CPFinput;
-    }    
+    }
 }

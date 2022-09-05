@@ -2,33 +2,45 @@ package com.bancodelt.java.program.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 public class ViewPrincipalAppController implements Initializable {
 
     @FXML
-    private AnchorPane TelaPrincipalApp;
-    @FXML
     private Label lblSaldo;
     @FXML
-    private Label lblPix;
+    private Label lblRS;
     @FXML
-    private Label lblTransferir;
+    private ImageView btnViewHide;
     @FXML
-    private Label lblDepositar;
+    private AnchorPane MenuSlider;
     @FXML
-    private Label lblExtrato;
+    private Button btnHome;
+    @FXML
+    private Button btnSacar;
+    @FXML
+    private Button btnDepositar;
+    @FXML
+    private Button btnPix;
+    @FXML
+    private Button btnDeslogar;
+    @FXML
+    private ImageView imgLogo;
+    private ImageView btnSideBar;
+    @FXML
+    private AnchorPane PainelCentral;
+    private ImageView btnSideBarClose;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
-
-    
 }

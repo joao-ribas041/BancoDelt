@@ -1,0 +1,66 @@
+.Base1{
+    -fx-background-color: #02bdff;
+}
+.Base2{
+    -fx-background-color: #5459ff;
+}
+
+.base{
+    -fx-background-color: linear-gradient(
+        to right,
+        #02bdff 0%,
+        #02bdff 50%,
+        #5459ff 50%,
+        #5459ff 100%
+        );
+}
+.baseInverse{
+    -fx-background-color: linear-gradient(
+        to right,
+        #5459ff 0%,
+        #5459ff 50%,
+        #02bdff 50%,
+        #02bdff 100%
+        );
+}
+
+
+.bntBase{
+    -fx-background-color: #5459ff;
+    -fx-text-fill: black;
+}
+.bntBase:hover{
+    -fx-background-color: transparent;
+    -fx-border-color: #5459ff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: black;
+}
+
+.btnMenu{
+    -fx-background-color: transparent;
+    -fx-border-color: #5459ff;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-text-fill: white;
+}
+.btnMenu:hover{
+    -fx-background-color: transparent;
+    -fx-border-color: #5459ff;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-text-fill: white;
+}
+
+.txtFBase{
+    -fx-background-color: transparent;
+    -fx-border-color: #5459ff;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+}
+
+.lblBase1{
+    -fx-text-fill: #02bdff;
+}
+.lblBase2{
+    -fx-text-fill: #5459ff;
+}
