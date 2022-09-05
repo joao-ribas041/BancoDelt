@@ -72,6 +72,11 @@
                               </TextField>
                            </children>
                         </HBox>
+                        <TextField fx:id="txtFNome" blendMode="SRC_ATOP" cache="true" promptText="Digite seu nome" styleClass="txtFBase">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
                         <DatePicker fx:id="dpNascimento" prefHeight="45.0" prefWidth="250.0" promptText="dd/MM/yyyy" styleClass="txtFBase" />
                         <ComboBox fx:id="cbGenero" prefHeight="45.0" prefWidth="250.0" promptText="Selecione o genero" styleClass="txtFBase" />
                         <PasswordField fx:id="txtFSenha" prefHeight="45.0" prefWidth="250.0" promptText="Digite sua senha" styleClass="txtFBase">
