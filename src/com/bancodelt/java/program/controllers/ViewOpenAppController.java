@@ -37,7 +37,7 @@ public class ViewOpenAppController implements Initializable {
     private Parent root;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {        
         txtFCPF.setOnKeyPressed((event) -> {
             if(event.getCode() == KeyCode.ENTER){
                 try {

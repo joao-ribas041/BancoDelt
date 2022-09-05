@@ -3,7 +3,7 @@ package com.bancodelt.java.program.controllers;
 import com.bancodelt.java.models.ContaCorrente;
 import com.bancodelt.java.models.ContaPoupanca;
 import com.bancodelt.java.models.EstiloAcc;
-import com.bancodelt.java.models.MascaraFx;
+import com.bancodelt.java.models.MascaraTextField;
 import com.bancodelt.java.models.alerts.AlertWarningPrototype;
 import com.bancodelt.java.program.Main;
 import java.io.IOException;
@@ -81,8 +81,8 @@ public class ViewRegisterAppController implements Initializable {
         numeroConta = 000000000;
         iniciarCategorias();
         
-        MascaraFx.mascaraNumerosInteiros(txtFddd);
-        MascaraFx.mascaraNumerosInteiros(txtFnumeroTelefone);
+        MascaraTextField.mascaraNumerosInteiros(txtFddd);
+        MascaraTextField.mascaraNumerosInteiros(txtFnumeroTelefone);
     }
 
     @FXML
