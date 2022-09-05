@@ -43,7 +43,6 @@ public class ViewLoginAppController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         MouseBarEvents();
         txtFCPF.setText(ViewOpenAppController.getCPFinput());
-        txtFSenha.setEditable(true);
     }   
 
     @FXML

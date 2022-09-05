@@ -62,13 +62,13 @@ public class ViewPerfilController implements Initializable {
     private VBox VBoxDDD;
     @FXML
     private VBox VBoxGenero;
+    @FXML
+    private Label lblNascimento;
+    @FXML
+    private TextField txtFNascimento;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        
+    }
 }

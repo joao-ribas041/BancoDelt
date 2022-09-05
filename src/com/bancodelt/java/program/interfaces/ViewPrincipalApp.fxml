@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.ViewPrincipalAppController">
+<BorderPane fx:id="TelaPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.ViewPrincipalAppController">
    <top>
       <AnchorPane prefHeight="110.0" prefWidth="800.0" styleClass="Base2" BorderPane.alignment="CENTER">
          <children>
@@ -55,27 +55,32 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="490.0" prefWidth="115.0" spacing="10.0" styleClass="Base1">
                <children>
-                  <Button fx:id="btnHome" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Home" textAlignment="CENTER">
+                  <Button fx:id="btnHome" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnHomeAction" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Home" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnSacar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Sacar" textAlignment="CENTER">
+                  <Button fx:id="btnPerfil" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPerfilAction" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Perfil" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnDepositar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Depositar" textAlignment="CENTER">
+                  <Button fx:id="btnSacar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnSacarAction" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Sacar" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnPix" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Pix" textAlignment="CENTER">
+                  <Button fx:id="btnDepositar" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnDepositarAction" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Depositar" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnDeslogar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="SAIR" textAlignment="CENTER">
+                  <Button fx:id="btnPix" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="93.0" mnemonicParsing="false" onAction="#btnPixAction" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="Pix" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDeslogar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnDeslogarAction" prefHeight="45.0" prefWidth="110.0" styleClass="btnMenu" text="SAIR" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
