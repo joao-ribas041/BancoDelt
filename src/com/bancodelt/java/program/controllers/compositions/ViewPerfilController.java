@@ -13,6 +13,8 @@ import javafx.scene.layout.VBox;
 public class ViewPerfilController implements Initializable {
 
     @FXML
+    private FlowPane FPConta;
+    @FXML
     private VBox VBoxAgencia;
     @FXML
     private Label lblAgencia;
@@ -37,31 +39,29 @@ public class ViewPerfilController implements Initializable {
     @FXML
     private TextField txtFNomeTitular;
     @FXML
-    private Label lblGenero;
-    @FXML
-    private ComboBox<?> cbGenero;
+    private VBox VBoxEmail;
     @FXML
     private Label lblEmail;
     @FXML
     private TextField txtFEmail;
     @FXML
+    private VBox VBoxDDD;
+    @FXML
     private Label lblDDD;
     @FXML
     private TextField txtFDDD;
+    @FXML
+    private VBox VBoxNumero;
     @FXML
     private Label lblNumero;
     @FXML
     private TextField txtFNumero;
     @FXML
-    private FlowPane FPConta;
-    @FXML
-    private VBox VBoxEmail;
-    @FXML
-    private VBox VBoxNumero;
-    @FXML
-    private VBox VBoxDDD;
-    @FXML
     private VBox VBoxGenero;
+    @FXML
+    private Label lblGenero;
+    @FXML
+    private ComboBox<?> cbGenero;
     @FXML
     private Label lblNascimento;
     @FXML
@@ -69,6 +69,5 @@ public class ViewPerfilController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
     }
 }

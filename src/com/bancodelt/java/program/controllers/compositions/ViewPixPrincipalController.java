@@ -6,14 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.FlowPane;
 
-public class ViewDepositarController implements Initializable {
+public class ViewPixPrincipalController implements Initializable {
 
     @FXML
     private FlowPane Titulo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    }
 }

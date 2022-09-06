@@ -26,7 +26,8 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        switchTelas(stage, "ViewOpenApp.fxml");
+        switchTelas(stage, "ViewPrincipalApp.fxml");
+        //switchTelas(stage, "ViewOpenApp.fxml");
     }
     
     public void switchTelas(Stage stg, String telafxml) throws IOException {
