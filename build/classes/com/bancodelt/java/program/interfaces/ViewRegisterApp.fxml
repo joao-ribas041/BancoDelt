@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane alignment="CENTER" columnHalignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" styleClass="baseInverse" stylesheets="@../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.ViewRegisterAppController">
+<FlowPane alignment="CENTER" columnHalignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="780.0" prefWidth="1100.0" styleClass="baseInverse" stylesheets="@../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.ViewRegisterAppController">
    <children>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
+      <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1100.0">
          <children>
-            <HBox prefHeight="30.0" prefWidth="800.0">
+            <HBox prefHeight="30.0" prefWidth="1100.0">
                <children>
                   <ImageView fx:id="btnVoltar" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#btnVoltarClick" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,9 +30,9 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="590.0" prefWidth="800.0">
+            <HBox alignment="CENTER" prefHeight="800.0" prefWidth="1100.0">
                <children>
-                  <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" vgap="2.0">
+                  <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="800.0" prefWidth="550.0" vgap="2.0">
                      <children>
                         <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -46,50 +46,140 @@
                         </Label>
                      </children>
                   </FlowPane>
-                  <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" vgap="15.0">
+                  <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="800.0" prefWidth="550.0" vgap="5.0">
                      <children>
-                        <TextField fx:id="txtFCPF" blendMode="SRC_ATOP" cache="true" editable="false" prefHeight="45.0" prefWidth="250.0" promptText="Informe seu CPF" styleClass="txtFBase">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="txtFEmail" blendMode="SRC_ATOP" cache="true" promptText="Digite seu e-mail" styleClass="txtFBase">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </TextField>
-                        <HBox spacing="10.0">
+                        <VBox prefHeight="80.0" prefWidth="250.0">
                            <children>
-                              <TextField fx:id="txtFddd" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="60.0" promptText="DDD" styleClass="txtFBase">
+                              <Label styleClass="lblBase2" text="CPF:">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
-                              </TextField>
-                              <TextField fx:id="txtFnumeroTelefone" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="180.0" promptText="Digite seu numero" styleClass="txtFBase">
+                              </Label>
+                              <TextField fx:id="txtFCPF" blendMode="SRC_ATOP" cache="true" editable="false" prefHeight="45.0" prefWidth="250.0" promptText="Informe seu CPF" styleClass="txtFBase">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </TextField>
                            </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="lblBase2" text="E-MAIL:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtFEmail" blendMode="SRC_ATOP" cache="true" promptText="Digite seu e-mail" styleClass="txtFBase">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="lblBase2" text="DDD:">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtFddd" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="60.0" promptText="DDD" styleClass="txtFBase">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="lblBase2" text="NUMERO:">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtFnumeroTelefone" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="180.0" promptText="Digite seu numero" styleClass="txtFBase">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
                         </HBox>
-                        <TextField fx:id="txtFNome" blendMode="SRC_ATOP" cache="true" promptText="Digite seu nome" styleClass="txtFBase">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </TextField>
-                        <DatePicker fx:id="dpNascimento" prefHeight="45.0" prefWidth="250.0" promptText="dd/MM/yyyy" styleClass="txtFBase" />
-                        <ComboBox fx:id="cbGenero" prefHeight="45.0" prefWidth="250.0" promptText="Selecione o genero" styleClass="txtFBase" />
-                        <PasswordField fx:id="txtFSenha" prefHeight="45.0" prefWidth="250.0" promptText="Digite sua senha" styleClass="txtFBase">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </PasswordField>
-                        <PasswordField fx:id="txtFConfirmSenha" prefHeight="45.0" prefWidth="250.0" promptText="Confirme sua senha" styleClass="txtFBase">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </PasswordField>
-                        <ComboBox fx:id="cbEstiloDaConta" prefHeight="45.0" prefWidth="250.0" promptText="Selecione o tipo da conta" styleClass="txtFBase" />
+                        <VBox>
+                           <children>
+                              <Label styleClass="lblBase2" text="NOME:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtFNome" blendMode="SRC_ATOP" cache="true" promptText="Digite seu nome" styleClass="txtFBase">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="lblBase2" text="DATA:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="dpNascimento" prefHeight="45.0" prefWidth="250.0" promptText="dd/MM/yyyy" styleClass="txtFBase" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="lblBase2" text="GENERO:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="cbGenero" prefHeight="45.0" prefWidth="250.0" promptText="Selecione o genero" styleClass="txtFBase" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="lblBase2" text="SENHA:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="txtFSenha" prefHeight="45.0" prefWidth="250.0" promptText="Digite sua senha" styleClass="txtFBase">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="lblBase2" text="CONFIRMAR SENHA:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="txtFConfirmSenha" prefHeight="45.0" prefWidth="250.0" promptText="Confirme sua senha" styleClass="txtFBase">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="lblBase2" text="TIPO DA CONTA">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="cbEstiloDaConta" prefHeight="45.0" prefWidth="250.0" promptText="Selecione o tipo da conta" styleClass="txtFBase" />
+                           </children>
+                        </VBox>
                         <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#AcaoBtnRegistrar" styleClass="bntBase" text="REGISTRAR" textAlignment="CENTER">
                            <font>
                               <Font size="14.0" />
