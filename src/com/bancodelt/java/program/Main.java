@@ -12,6 +12,7 @@ public class Main extends Application {
     
     private static Stage program;
     private static final String directoryJavaInterfaces = "/com/bancodelt/java/program/interfaces/";
+     private static final String directoryJavaInterfacesCompositions = "/com/bancodelt/java/program/interfaces/compositions/";
     
     private static final String directoryJavaResources = "/com/bancodelt/resources/";
     private static final String directoryJavaCss = "/com/bancodelt/resources/css/";
@@ -25,7 +26,8 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        switchTelas(stage, "ViewOpenApp.fxml");
+        switchTelas(stage, "ViewPrincipalApp.fxml");
+        //switchTelas(stage, "ViewOpenApp.fxml");
     }
     
     public void switchTelas(Stage stg, String telafxml) throws IOException {
@@ -52,6 +54,9 @@ public class Main extends Application {
     // Método para obter os diretórios
     public static String getDirectoryJavaInterfaces() {
         return directoryJavaInterfaces;
+    }
+    public static String getDirectoryJavaInterfacesCompositions() {
+        return directoryJavaInterfacesCompositions;
     }
     public static String getDirectoryJavaResources() {
         return directoryJavaResources;
