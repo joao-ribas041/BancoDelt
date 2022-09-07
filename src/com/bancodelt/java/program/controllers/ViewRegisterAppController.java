@@ -33,6 +33,8 @@ import javafx.stage.Stage;
 public class ViewRegisterAppController implements Initializable {
 
     @FXML
+    private TextField txtFNome;
+    @FXML
     private ImageView btnVoltar;
     @FXML
     private TextField txtFCPF;
@@ -69,8 +71,9 @@ public class ViewRegisterAppController implements Initializable {
     Main m = new Main();
     ViewOpenAppController voac = new ViewOpenAppController();
     AlertWarningPrototype alertaAviso;
-    @FXML
-    private TextField txtFNome;
+    
+    ContaCorrente cc;
+    ContaPoupanca cp;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -151,7 +154,7 @@ public class ViewRegisterAppController implements Initializable {
                                                         System.out.println("Data Criacão: " + dataCriacaoAcc);
                                                         System.out.println("Saldo: " + saldo);
                                                         System.out.println("Tipo: " + tipo);
-                                                        ContaCorrente cc = new ContaCorrente(numeroAgencia, numeroConta, CPF, email, ddd, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
+                                                        cc = new ContaCorrente(numeroAgencia, numeroConta, CPF, email, ddd, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
                                                         Main.getProgram().close();
                                                         m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
                                                     }
@@ -173,7 +176,7 @@ public class ViewRegisterAppController implements Initializable {
                                                         System.out.println("Data Criacão: " + dataCriacaoAcc);
                                                         System.out.println("Saldo: " + saldo);
                                                         System.out.println("Tipo: " + tipo);
-                                                        ContaPoupanca cp = new ContaPoupanca(numeroAgencia, numeroConta, CPF, email, ddd, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
+                                                        cp = new ContaPoupanca(numeroAgencia, numeroConta, CPF, email, ddd, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
                                                         Main.getProgram().close();
                                                         m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
                                                     }
@@ -312,4 +315,14 @@ public class ViewRegisterAppController implements Initializable {
         obsGenerosAcc = FXCollections.observableArrayList(generosAcc);
         cbGenero.setItems(obsGenerosAcc);
     }
+
+    public ContaCorrente getCc() {
+        return cc;
+    }
+
+    public ContaPoupanca getCp() {
+        return cp;
+    }
+    
+    
 }

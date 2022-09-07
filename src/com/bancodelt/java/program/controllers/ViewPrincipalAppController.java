@@ -42,8 +42,6 @@ public class ViewPrincipalAppController implements Initializable {
     private ImageView imgLogo;
     @FXML
     private FlowPane PainelCentral;
-    
-    Main m = new Main();
     @FXML
     private BorderPane TelaPrincipal;
     @FXML
@@ -74,6 +72,8 @@ public class ViewPrincipalAppController implements Initializable {
     private ImageView imgPoupanca;
     @FXML
     private ImageView imgExtrato;
+    
+    Main m = new Main();
     
     Image imgMostrar = new Image(getClass().getResourceAsStream(Main.getDirectoryJavaIcons() + "MOSTRAR.png"));
     Image imgOculto = new Image(getClass().getResourceAsStream(Main.getDirectoryJavaIcons() + "OCULTAR.png"));
