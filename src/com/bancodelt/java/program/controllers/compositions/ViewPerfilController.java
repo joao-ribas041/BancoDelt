@@ -45,12 +45,6 @@ public class ViewPerfilController implements Initializable {
     @FXML
     private TextField txtFEmail;
     @FXML
-    private VBox VBoxDDD;
-    @FXML
-    private Label lblDDD;
-    @FXML
-    private TextField txtFDDD;
-    @FXML
     private VBox VBoxNumero;
     @FXML
     private Label lblNumero;
@@ -66,8 +60,11 @@ public class ViewPerfilController implements Initializable {
     private Label lblNascimento;
     @FXML
     private TextField txtFNascimento;
+    @FXML
+    private FlowPane Titulo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
     }
 }

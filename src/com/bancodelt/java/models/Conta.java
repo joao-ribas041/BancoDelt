@@ -1,22 +1,23 @@
 package com.bancodelt.java.models;
 
-import java.util.Date;
-
 public abstract class Conta {
     
-    int numeroAgencia;
-    int numeroConta;
-    String CPF;
-    String email;
-    String ddd;
-    String numeroCelular;
-    String nomeTitular;
-    String generoTitular;
-    String senhaTitular;
-    String dataNascimento;
-    String dataCriacaoAcc;
-    double saldo;
-    byte tipo;
+    protected static int numeroAgencia,
+            numeroConta,
+            tipo; 
+    
+    protected static String numAgencia = null,
+            numConta = null,
+            CPF = null,
+            email = null,
+            numeroCelular = null,
+            nomeTitular = null,
+            generoTitular = null,
+            senhaTitular = null,
+            dataNascimento = null,
+            dataCriacaoAcc = null;
+    
+    protected static double saldo;
     
     void sacar() {
         
@@ -26,52 +27,116 @@ public abstract class Conta {
         
     }
 
-    public int getNumeroAgencia() {
+    public static int getNumeroAgencia() {
         return numeroAgencia;
     }
 
-    public int getNumeroConta() {
+    public static void setNumeroAgencia(int numeroAgencia) {
+        Conta.numeroAgencia = numeroAgencia;
+    }
+
+    public static int getNumeroConta() {
         return numeroConta;
     }
 
-    public String getCPF() {
+    public static void setNumeroConta(int numeroConta) {
+        Conta.numeroConta = numeroConta;
+    }
+
+    public static int getTipo() {
+        return tipo;
+    }
+
+    public static void setTipo(int tipo) {
+        Conta.tipo = tipo;
+    }
+
+    public static String getNumAgencia() {
+        return numAgencia;
+    }
+
+    public static void setNumAgencia(String numAgencia) {
+        Conta.numAgencia = numAgencia;
+    }
+
+    public static String getNumConta() {
+        return numConta;
+    }
+
+    public static void setNumConta(String numConta) {
+        Conta.numConta = numConta;
+    }
+
+    public static String getCPF() {
         return CPF;
     }
 
-    public String getEmail() {
+    public static void setCPF(String CPF) {
+        Conta.CPF = CPF;
+    }
+
+    public static String getEmail() {
         return email;
     }
 
-    public String getDdd() {
-        return ddd;
+    public static void setEmail(String email) {
+        Conta.email = email;
     }
 
-    public String getNumeroCelular() {
+    public static String getNumeroCelular() {
         return numeroCelular;
     }
 
-    public String getNomeTitular() {
+    public static void setNumeroCelular(String numeroCelular) {
+        Conta.numeroCelular = numeroCelular;
+    }
+
+    public static String getNomeTitular() {
         return nomeTitular;
     }
 
-    public String getGeneroTitular() {
+    public static void setNomeTitular(String nomeTitular) {
+        Conta.nomeTitular = nomeTitular;
+    }
+
+    public static String getGeneroTitular() {
         return generoTitular;
     }
 
-    public String getDataNascimento() {
+    public static void setGeneroTitular(String generoTitular) {
+        Conta.generoTitular = generoTitular;
+    }
+
+    public static String getSenhaTitular() {
+        return senhaTitular;
+    }
+
+    public static void setSenhaTitular(String senhaTitular) {
+        Conta.senhaTitular = senhaTitular;
+    }
+
+    public static String getDataNascimento() {
         return dataNascimento;
     }
 
-    public String getDataCriacaoAcc() {
+    public static void setDataNascimento(String dataNascimento) {
+        Conta.dataNascimento = dataNascimento;
+    }
+
+    public static String getDataCriacaoAcc() {
         return dataCriacaoAcc;
     }
 
-    public double getSaldo() {
+    public static void setDataCriacaoAcc(String dataCriacaoAcc) {
+        Conta.dataCriacaoAcc = dataCriacaoAcc;
+    }
+
+    public static double getSaldo() {
         return saldo;
     }
 
-    public byte getTipo() {
-        return tipo;
+    public static void setSaldo(double saldo) {
+        Conta.saldo = saldo;
     }
     
     

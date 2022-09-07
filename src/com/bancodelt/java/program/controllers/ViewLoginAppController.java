@@ -1,5 +1,7 @@
 package com.bancodelt.java.program.controllers;
 
+import com.bancodelt.java.models.alerts.AlertWarningPrototype;
+import com.bancodelt.java.models.dao.ContaDAO;
 import com.bancodelt.java.program.Main;
 import java.io.IOException;
 import java.net.URL;
@@ -9,8 +11,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -33,15 +33,14 @@ public class ViewLoginAppController implements Initializable {
     private HBox hboxlogin;
     
     Main m = new Main();
-    ViewOpenAppController voac = new ViewOpenAppController();
+    AlertWarningPrototype alertaAviso;
     
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    ContaDAO cDAO = new ContaDAO();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MouseBarEvents();
+        txtFCPF.setEditable(false);
         txtFCPF.setText(ViewOpenAppController.getCPFinput());
     }   
 
@@ -57,12 +56,13 @@ public class ViewLoginAppController implements Initializable {
     }
     
     private boolean LoginApp() throws IOException{
-        if(txtFCPF.getText().equals("1234") && txtFSenha.getText().equals("1234")){
+        if(cDAO.loginTitular(txtFCPF.getText(), txtFSenha.getText()) == true) {
+            cDAO.resgatarDadosTitular(txtFCPF.getText());
             Main.getProgram().close();
             m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
             return true;
         } else {
-            // alert
+            alertaAviso = new AlertWarningPrototype("Alerta", "Usuario invalido!", "Verifique o cpf ou a senha.");
             return false;
         }
     }
@@ -85,6 +85,5 @@ public class ViewLoginAppController implements Initializable {
                 }
             }
         });
-        
     }
 }

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="BancoDelt.jar" size="282978" download="eager" />
+    <jar href="BancoDelt.jar" size="350344" download="eager" />
     <jar href="lib\javafx-swt.jar" size="37127" download="eager" />
     <jar href="lib\javafx.base.jar" size="745882" download="eager" />
     <jar href="lib\javafx.controls.jar" size="2544033" download="eager" />
@@ -17,7 +17,7 @@
     <jar href="lib\javafx.media.jar" size="276001" download="eager" />
     <jar href="lib\javafx.swing.jar" size="88807" download="eager" />
     <jar href="lib\javafx.web.jar" size="726942" download="eager" />
-    <jar href="lib\jfoenix-9.0.10.jar" size="2432549" download="eager" />
+    <jar href="lib\mysql-connector-java-8.0.29.jar" size="2519547" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="com.bancodelt.java.program.Main"  name="BancoDelt" />
   <update check="always"/>

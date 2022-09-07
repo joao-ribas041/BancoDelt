@@ -87,14 +87,14 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnTransferir" alignment="CENTER" layoutX="12.0" layoutY="156.0" mnemonicParsing="false" onAction="#btnTransferirAction" prefHeight="70.0" prefWidth="175.0" styleClass="btnMenu" text="Transferir" textAlignment="CENTER">
+                  <Button fx:id="btnSacar" alignment="CENTER" layoutX="12.0" layoutY="156.0" mnemonicParsing="false" onAction="#btnSacarAction" prefHeight="70.0" prefWidth="175.0" styleClass="btnMenu" text="Sacar" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/images/TRANSFERIR.png" />
+                              <Image url="@../../../resources/images/SACAR.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -169,14 +169,14 @@
                   </Label>
                </children>
             </FlowPane>
-            <FlowPane fx:id="fpTransferir" alignment="CENTER" hgap="2.0" prefHeight="145.0" prefWidth="145.0" styleClass="fpButton" vgap="2.0">
+            <FlowPane fx:id="fpSacar" alignment="CENTER" hgap="2.0" prefHeight="145.0" prefWidth="145.0" styleClass="fpButton" vgap="2.0">
                <children>
-                  <ImageView fx:id="imgTransferir" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgSacar" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../resources/images/TRANSFERIR.png" />
+                        <Image url="@../../../resources/images/SACAR.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="lblBase2" text="TRANSFERIR" textFill="#b2edff">
+                  <Label styleClass="lblBase2" text="SACAR" textFill="#b2edff">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>

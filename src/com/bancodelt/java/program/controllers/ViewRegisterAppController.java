@@ -1,13 +1,19 @@
 package com.bancodelt.java.program.controllers;
 
+import com.bancodelt.java.config.DBAcess;
 import com.bancodelt.java.models.ContaCorrente;
 import com.bancodelt.java.models.ContaPoupanca;
 import com.bancodelt.java.models.EstiloAcc;
-import com.bancodelt.java.models.MascaraTextField;
+import com.bancodelt.java.config.MascaraTextField;
 import com.bancodelt.java.models.alerts.AlertWarningPrototype;
 import com.bancodelt.java.program.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -33,6 +39,8 @@ import javafx.stage.Stage;
 public class ViewRegisterAppController implements Initializable {
 
     @FXML
+    private TextField txtFNome;
+    @FXML
     private ImageView btnVoltar;
     @FXML
     private TextField txtFCPF;
@@ -42,8 +50,6 @@ public class ViewRegisterAppController implements Initializable {
     private Button btnRegistrar;
     @FXML
     private TextField txtFEmail;
-    @FXML
-    private TextField txtFddd;
     @FXML
     private TextField txtFnumeroTelefone;
     @FXML
@@ -58,19 +64,25 @@ public class ViewRegisterAppController implements Initializable {
     private ComboBox<EstiloAcc> cbEstiloDaConta;
     private List<EstiloAcc> estilosAcc = new ArrayList<>();
     private ObservableList<EstiloAcc> obsEstiloAcc;
-    
+
     private int numeroAgencia, numeroConta;
-    private String CPF, email, ddd, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc;
+    private String CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc;
     private double saldo;
     private byte tipo;
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     LocalDateTime dataAtual = LocalDateTime.now();
-    
+
     Main m = new Main();
     ViewOpenAppController voac = new ViewOpenAppController();
     AlertWarningPrototype alertaAviso;
-    @FXML
-    private TextField txtFNome;
+
+    ContaCorrente cc;
+    ContaPoupanca cp;
+
+    private Connection conexao = null;
+    private PreparedStatement pst = null;
+    private ResultSet rs = null;
+    private Statement st = null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,116 +92,111 @@ public class ViewRegisterAppController implements Initializable {
         numeroAgencia = 0001;
         numeroConta = 000000000;
         iniciarCategorias();
-        
-        MascaraTextField.mascaraNumerosInteiros(txtFddd);
-        MascaraTextField.mascaraNumerosInteiros(txtFnumeroTelefone);
+
+        MascaraTextField.mascaraEmail(txtFEmail);
+        MascaraTextField.mascaraTelefone(txtFnumeroTelefone);
+        MascaraTextField.mascaraNome(txtFNome);
+        MascaraTextField.mascaraData(dpNascimento);
     }
 
     @FXML
     private void AcaoBtnRegistrar(ActionEvent event) throws IOException {
         CheckVariaveis();
     }
-    
+
     @FXML
     private void btnVoltarClick(MouseEvent event) throws IOException {
         Main.getProgram().close();
         m.switchTelas(new Stage(), "ViewOpenApp.fxml");
     }
-    
+
     private void CheckVariaveis() throws IOException {
         CPF = txtFCPF.getText();
-        if(txtFEmail.getText().isEmpty()){
+        if (txtFEmail.getText().isEmpty()) {
             alertaAviso = new AlertWarningPrototype("Alerta", "Informe o E-mail!", "O campo E-mail está vazio, por favor informe-o.");
         } else {
-            if(txtFEmail.getText().contains("@") && txtFEmail.getText().contains(".com")) {
+            if (txtFEmail.getText().contains("@") && txtFEmail.getText().contains(".com")) {
                 email = txtFEmail.getText();
-                if(txtFddd.getText().isEmpty()) {
-                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu DDD", "O campo DDD está vazio, por favor informe-o.");
+                if (txtFnumeroTelefone.getText().isEmpty()) {
+                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu numero", "O campo numero de telefone está vazio, por favor informe-o.");
                 } else {
-                    if(txtFnumeroTelefone.getText().isEmpty()) {
-                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu numero", "O campo numero de telefone está vazio, por favor informe-o.");
+                    numeroCelular = txtFnumeroTelefone.getText();
+                    if (txtFNome.getText().isEmpty()) {
+                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu nome", "O campo nome está vazio, por favor informe-o.");
                     } else {
-                        ddd = txtFddd.getText();
-                        numeroCelular = txtFnumeroTelefone.getText();
-                        if(txtFNome.getText().isEmpty()) {
-                            alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu nome", "O campo nome está vazio, por favor informe-o.");
+                        if (txtFNome.getText().length() < 3 || txtFNome.getText().length() >= 50) {
+                            alertaAviso = new AlertWarningPrototype("Alerta", "Nome invalido", "O nome informado é invalido, por favor informe um nome legitmo.");
                         } else {
-                            if(txtFNome.getText().length() < 3 || txtFNome.getText().length() >= 50) {
-                                alertaAviso = new AlertWarningPrototype("Alerta", "Nome invalido", "O nome informado é invalido, por favor informe um nome legitmo.");
-                            } else {
-                                nomeTitular = txtFNome.getText();
-                                if(dpNascimento.getValue() != null) {
-                                    // logica para verificar se é maior que 18 anos
-                                    dataNascimento = dpNascimento.getValue().format(dtf);
-                                    dataCriacaoAcc = dtf.format(dataAtual);
-                                    
-                                    if(cbGenero.getValue() != null) {
-                                        generoTitular = cbGenero.getValue().getEstilo();
-                                        if(txtFSenha.getText().isEmpty() || txtFConfirmSenha.getText().isEmpty()) {
-                                            alertaAviso = new AlertWarningPrototype("Alerta", "Informe a senha", "O campo senha está vazio, por favor informe-o.");
-                                        } else {
-                                            if(txtFSenha.getText().equals(txtFConfirmSenha.getText())) {
-                                                senhaTitular = txtFSenha.getText();
-                                                if(cbEstiloDaConta.getValue() != null) {
-                                                    saldo = 0;
-                                                    if(cbEstiloDaConta.getValue().getEstilo().equals("Conta Corrente")) {
-                                                        tipo = (byte)cbEstiloDaConta.getValue().getId();
-                                                        numeroConta += 1;
-                                                        System.out.println("");
-                                                        System.out.println("Conta corrente");
-                                                        System.out.println("");
-                                                        System.out.println("Numero agencia: " + numeroAgencia);
-                                                        System.out.println("Numero conta: " + numeroConta);
-                                                        System.out.println("CPF: " + CPF);
-                                                        System.out.println("E-mail: " + email);
-                                                        System.out.println("ddd: " + ddd);
-                                                        System.out.println("Numero Celular: " + numeroCelular);
-                                                        System.out.println("Nome Titular: " + nomeTitular);
-                                                        System.out.println("Genero: " + generoTitular);
-                                                        System.out.println("Senha Titular: " + senhaTitular);
-                                                        System.out.println("Data nascimento: " + dataNascimento);
-                                                        System.out.println("Data Criacão: " + dataCriacaoAcc);
-                                                        System.out.println("Saldo: " + saldo);
-                                                        System.out.println("Tipo: " + tipo);
-                                                        ContaCorrente cc = new ContaCorrente(numeroAgencia, numeroConta, CPF, email, ddd, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
-                                                        Main.getProgram().close();
-                                                        m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
-                                                    }
-                                                    if(cbEstiloDaConta.getValue().getEstilo().equals("Conta Poupança")) {
-                                                        System.out.println("");
-                                                        System.out.println("Conta poupança");
-                                                        System.out.println("");
-                                                        numeroConta += 1;
-                                                        System.out.println("Numero agencia: " + numeroAgencia);
-                                                        System.out.println("Numero conta: " + numeroConta);
-                                                        System.out.println("CPF: " + CPF);
-                                                        System.out.println("E-mail: " + email);
-                                                        System.out.println("ddd: " + ddd);
-                                                        System.out.println("Numero Celular: " + numeroCelular);
-                                                        System.out.println("Nome Titular: " + nomeTitular);
-                                                        System.out.println("Genero: " + generoTitular);
-                                                        System.out.println("Senha Titular: " + senhaTitular);
-                                                        System.out.println("Data nascimento: " + dataNascimento);
-                                                        System.out.println("Data Criacão: " + dataCriacaoAcc);
-                                                        System.out.println("Saldo: " + saldo);
-                                                        System.out.println("Tipo: " + tipo);
-                                                        ContaPoupanca cp = new ContaPoupanca(numeroAgencia, numeroConta, CPF, email, ddd, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
-                                                        Main.getProgram().close();
-                                                        m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
-                                                    }
-                                                } else {
-                                                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o estilo da conta", "Você não escolheu o estilo da conta, por favor informe-o.");
+                            nomeTitular = txtFNome.getText();
+                            if (dpNascimento.getValue() != null) {
+                                // logica para verificar se é maior que 18 anos
+                                dataNascimento = dpNascimento.getValue().format(dtf);
+                                dataCriacaoAcc = dtf.format(dataAtual);
+
+                                if (cbGenero.getValue() != null) {
+                                    generoTitular = cbGenero.getValue().getEstilo();
+                                    if (txtFSenha.getText().isEmpty() || txtFConfirmSenha.getText().isEmpty()) {
+                                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe a senha", "O campo senha está vazio, por favor informe-o.");
+                                    } else {
+                                        if (txtFSenha.getText().equals(txtFConfirmSenha.getText())) {
+                                            senhaTitular = txtFSenha.getText();
+                                            if (cbEstiloDaConta.getValue() != null) {
+                                                saldo = 0;
+                                                if (cbEstiloDaConta.getValue().getEstilo().equals("Conta Corrente")) {
+                                                    tipo = (byte) cbEstiloDaConta.getValue().getId();
+                                                    numeroConta += 1;
+                                                    System.out.println("");
+                                                    System.out.println("Conta corrente");
+                                                    System.out.println("");
+                                                    System.out.println("Numero agencia: " + numeroAgencia);
+                                                    System.out.println("Numero conta: " + numeroConta);
+                                                    System.out.println("CPF: " + CPF);
+                                                    System.out.println("E-mail: " + email);
+                                                    System.out.println("Numero Celular: " + numeroCelular);
+                                                    System.out.println("Nome Titular: " + nomeTitular);
+                                                    System.out.println("Genero: " + generoTitular);
+                                                    System.out.println("Senha Titular: " + senhaTitular);
+                                                    System.out.println("Data nascimento: " + dataNascimento);
+                                                    System.out.println("Data Criacão: " + dataCriacaoAcc);
+                                                    System.out.println("Saldo: " + saldo);
+                                                    System.out.println("Tipo: " + tipo);
+                                                    cc = new ContaCorrente(numeroAgencia, numeroConta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
+                                                    Main.getProgram().close();
+                                                    m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
+                                                }
+                                                if (cbEstiloDaConta.getValue().getEstilo().equals("Conta Poupança")) {
+                                                    System.out.println("");
+                                                    System.out.println("Conta poupança");
+                                                    System.out.println("");
+                                                    numeroConta += 1;
+                                                    System.out.println("Numero agencia: " + numeroAgencia);
+                                                    System.out.println("Numero conta: " + numeroConta);
+                                                    System.out.println("CPF: " + CPF);
+                                                    System.out.println("E-mail: " + email);
+                                                    System.out.println("Numero Celular: " + numeroCelular);
+                                                    System.out.println("Nome Titular: " + nomeTitular);
+                                                    System.out.println("Genero: " + generoTitular);
+                                                    System.out.println("Senha Titular: " + senhaTitular);
+                                                    System.out.println("Data nascimento: " + dataNascimento);
+                                                    System.out.println("Data Criacão: " + dataCriacaoAcc);
+                                                    System.out.println("Saldo: " + saldo);
+                                                    System.out.println("Tipo: " + tipo);
+                                                    cp = new ContaPoupanca(numeroAgencia, numeroConta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
+                                                    Main.getProgram().close();
+                                                    m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
                                                 }
                                             } else {
-                                                alertaAviso = new AlertWarningPrototype("Alerta", "Senhas diferentes", "As senhas informadas são diferentes, por favor confirme sua senha.");
+                                                alertaAviso = new AlertWarningPrototype("Alerta", "Informe o estilo da conta", "Você não escolheu o estilo da conta, por favor informe-o.");
                                             }
+                                        } else {
+                                            alertaAviso = new AlertWarningPrototype("Alerta", "Senhas diferentes", "As senhas informadas são diferentes, por favor confirme sua senha.");
                                         }
-                                    } else {
-                                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe o genero", "Você não escolheu o genero, por favor informe-o.");
                                     }
                                 } else {
-                                    alertaAviso = new AlertWarningPrototype("Alerta", "Data invalida", "A data informada é invalido, por favor informe uma data legitma.");
+                                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o genero", "Você não escolheu o genero, por favor informe-o.");
                                 }
+                            } else {
+                                alertaAviso = new AlertWarningPrototype("Alerta", "Data invalida", "A data informada é invalido, por favor informe uma data legitma.");
                             }
                         }
                     }
@@ -199,7 +206,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         }
     }
-    
+
     private void MouseBarEvents() {
         btnVoltar.setOnMouseEntered((event) -> {
             btnVoltar.setFitWidth(25);
@@ -209,18 +216,9 @@ public class ViewRegisterAppController implements Initializable {
             btnVoltar.setFitWidth(20);
             btnVoltar.setFitHeight(20);
         });
-        
+
         txtFEmail.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
-                try {
-                    CheckVariaveis();
-                } catch (IOException ex) {
-                    Logger.getLogger(ViewRegisterAppController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        txtFddd.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -229,7 +227,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
         txtFnumeroTelefone.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -238,7 +236,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
         txtFNome.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -247,7 +245,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
         dpNascimento.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -256,7 +254,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
         cbGenero.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -265,7 +263,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
         txtFSenha.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -274,7 +272,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
         txtFConfirmSenha.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -283,7 +281,7 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
         cbEstiloDaConta.setOnKeyPressed((event) -> {
-            if(event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER) {
                 try {
                     CheckVariaveis();
                 } catch (IOException ex) {
@@ -292,24 +290,35 @@ public class ViewRegisterAppController implements Initializable {
             }
         });
     }
-    
+
     public void iniciarCategorias() {
-        EstiloAcc estilo0 = new EstiloAcc(0, "Conta Poupança");
-        EstiloAcc estilo1 = new EstiloAcc(1, "Conta Corrente");
-        estilosAcc.add(estilo0);
-        estilosAcc.add(estilo1);
-        
+        conexao = DBAcess.getConexao();
+        String sql = "SELECT id_estilo, estilo_acc from estilo_conta;";
+        try {
+            st = conexao.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                int id_estilo = rs.getInt("id_estilo");
+                String estilo = rs.getString("estilo_acc");
+                estilosAcc.add(new EstiloAcc(id_estilo, estilo));
+            }
+            DBAcess.closeConexao(conexao, rs, st);
+        } catch (SQLException e) {
+            Logger.getLogger(ViewRegisterAppController.class.getName()).log(Level.SEVERE, null, e);
+            DBAcess.closeConexao(conexao, rs, st);
+        }
         obsEstiloAcc = FXCollections.observableArrayList(estilosAcc);
         cbEstiloDaConta.setItems(obsEstiloAcc);
-        
+
         EstiloAcc genero0 = new EstiloAcc(0, "Prefiro não dizer");
         EstiloAcc genero1 = new EstiloAcc(1, "Masculino");
         EstiloAcc genero2 = new EstiloAcc(2, "Feminino");
         generosAcc.add(genero0);
         generosAcc.add(genero1);
         generosAcc.add(genero2);
-        
+
         obsGenerosAcc = FXCollections.observableArrayList(generosAcc);
         cbGenero.setItems(obsGenerosAcc);
     }
+
 }

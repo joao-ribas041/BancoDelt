@@ -1,8 +1,10 @@
 package com.bancodelt.java.program.controllers;
 
+import com.bancodelt.java.models.Conta;
 import com.bancodelt.java.program.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,20 +44,14 @@ public class ViewPrincipalAppController implements Initializable {
     private ImageView imgLogo;
     @FXML
     private FlowPane PainelCentral;
-    
-    Main m = new Main();
     @FXML
     private BorderPane TelaPrincipal;
     @FXML
     private FlowPane fpDepositar;
     @FXML
-    private FlowPane fpTransferir;
-    @FXML
     private FlowPane fpPIX;
     @FXML
     private FlowPane fpPoupanca;
-    @FXML
-    private Button btnTransferir;
     @FXML
     private Button btnPIX;
     @FXML
@@ -67,23 +63,32 @@ public class ViewPrincipalAppController implements Initializable {
     @FXML
     private ImageView imgDepositar;
     @FXML
-    private ImageView imgTransferir;
-    @FXML
     private ImageView imgPix;
     @FXML
     private ImageView imgPoupanca;
     @FXML
     private ImageView imgExtrato;
+    @FXML
+    private Button btnSacar;
+    @FXML
+    private FlowPane fpSacar;
+    @FXML
+    private ImageView imgSacar;
+    
+    Main m = new Main();
     
     Image imgMostrar = new Image(getClass().getResourceAsStream(Main.getDirectoryJavaIcons() + "MOSTRAR.png"));
     Image imgOculto = new Image(getClass().getResourceAsStream(Main.getDirectoryJavaIcons() + "OCULTAR.png"));
+    DecimalFormat df = new DecimalFormat("#.00");
     
     private boolean viewHide = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ViewHide();
+        lblSaldo.setText(df.format(Conta.getSaldo()));
         
+        
+        ViewHide();
         mouseMenuHomeAction();
     }
     @FXML
@@ -99,8 +104,8 @@ public class ViewPrincipalAppController implements Initializable {
         carregarSubTelas("ViewDepositar.fxml");
     }
     @FXML
-    private void btnTransferirAction(ActionEvent event) {
-        carregarSubTelas("ViewTransferir.fxml");
+    private void btnSacarAction(ActionEvent event) {
+        carregarSubTelas("ViewSacar.fxml");
     }
     @FXML
     private void btnPIXAction(ActionEvent event) {
@@ -140,7 +145,7 @@ public class ViewPrincipalAppController implements Initializable {
                 btnViewHide.setImage(imgOculto);
                 viewHide = true;
             } else {
-                lblSaldo.setText("1.000.000,00");
+                lblSaldo.setText(df.format(Conta.getSaldo()));
                 btnViewHide.setImage(imgMostrar);
                 viewHide = false;
             }
@@ -161,17 +166,17 @@ public class ViewPrincipalAppController implements Initializable {
             fpDepositar.setPrefHeight(145);
             
         });
-        fpTransferir.setOnMouseEntered((event) -> {
-            imgTransferir.setFitWidth(150);
-            imgTransferir.setFitHeight(150);
-            fpTransferir.setPrefWidth(165);
-            fpTransferir.setPrefHeight(165);
+        fpSacar.setOnMouseEntered((event) -> {
+            imgSacar.setFitWidth(150);
+            imgSacar.setFitHeight(150);
+            fpSacar.setPrefWidth(165);
+            fpSacar.setPrefHeight(165);
         });
-        fpTransferir.setOnMouseExited((event) -> {
-            imgTransferir.setFitWidth(130);
-            imgTransferir.setFitHeight(130);
-            fpTransferir.setPrefWidth(145);
-            fpTransferir.setPrefHeight(145);
+        fpSacar.setOnMouseExited((event) -> {
+            imgSacar.setFitWidth(130);
+            imgSacar.setFitHeight(130);
+            fpSacar.setPrefWidth(145);
+            fpSacar.setPrefHeight(145);
         });
         fpPIX.setOnMouseEntered((event) -> {
             imgPix.setFitWidth(150);
@@ -213,8 +218,8 @@ public class ViewPrincipalAppController implements Initializable {
         fpDepositar.setOnMouseClicked((event) -> {
             carregarSubTelas("ViewDepositar.fxml");
         });
-        fpTransferir.setOnMouseClicked((event) -> {
-            carregarSubTelas("ViewTransferir.fxml");
+        fpSacar.setOnMouseClicked((event) -> {
+            carregarSubTelas("ViewSacar.fxml");
         });
         fpPIX.setOnMouseClicked((event) -> {
             carregarSubTelas("ViewPixPrincipal.fxml");
