@@ -9,24 +9,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 
-public class ViewDepositarController implements Initializable {
+public class ViewSacarController implements Initializable {
 
     @FXML
     private FlowPane Titulo;
     @FXML
     private TextField txtFValor;
     @FXML
-    private TextField txtFConta;
-    @FXML
-    private Button btnDepositar;
+    private Button btnSacar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
-    private void btnDepositarAction(ActionEvent event) {
+    private void btnSacarAction(ActionEvent event) {
     }
-    
 }

@@ -74,16 +74,10 @@
                   <TextField fx:id="txtFEmail" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase" />
                </children>
             </VBox>
-            <VBox fx:id="VBoxDDD" prefHeight="50.0" prefWidth="70.0">
+            <VBox fx:id="VBoxNumero" prefHeight="58.0" prefWidth="183.0">
                <children>
-                  <Label fx:id="lblDDD" styleClass="lblBase2" text="DDD:" />
-                  <TextField fx:id="txtFDDD" prefHeight="26.0" prefWidth="59.0" styleClass="txtFBase" />
-               </children>
-            </VBox>
-            <VBox fx:id="VBoxNumero" prefHeight="45.0" prefWidth="150.0">
-               <children>
-                  <Label fx:id="lblNumero" styleClass="lblBase2" text="Numero:" />
-                  <TextField fx:id="txtFNumero" styleClass="txtFBase" />
+                  <Label fx:id="lblNumero" styleClass="lblBase2" text="Numero telefone:" />
+                  <TextField fx:id="txtFNumero" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase" />
                </children>
             </VBox>
          </children>

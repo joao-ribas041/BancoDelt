@@ -1,6 +1,5 @@
 package com.bancodelt.java.program.controllers.compositions;
 
-import com.bancodelt.java.program.controllers.ViewRegisterAppController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -46,12 +45,6 @@ public class ViewPerfilController implements Initializable {
     @FXML
     private TextField txtFEmail;
     @FXML
-    private VBox VBoxDDD;
-    @FXML
-    private Label lblDDD;
-    @FXML
-    private TextField txtFDDD;
-    @FXML
     private VBox VBoxNumero;
     @FXML
     private Label lblNumero;
@@ -72,5 +65,6 @@ public class ViewPerfilController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
     }
 }

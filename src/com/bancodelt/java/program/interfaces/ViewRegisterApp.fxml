@@ -18,7 +18,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1100.0">
          <children>
-            <HBox prefHeight="30.0" prefWidth="1100.0">
+            <HBox prefHeight="45.0" prefWidth="1100.0">
                <children>
                   <ImageView fx:id="btnVoltar" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#btnVoltarClick" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +30,7 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="800.0" prefWidth="1100.0">
+            <HBox alignment="CENTER" prefHeight="790.0" prefWidth="1100.0">
                <children>
                   <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="800.0" prefWidth="550.0" vgap="2.0">
                      <children>
@@ -76,38 +76,20 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <HBox spacing="10.0">
+                        <VBox>
                            <children>
-                              <VBox>
-                                 <children>
-                                    <Label styleClass="lblBase2" text="DDD:">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="txtFddd" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="60.0" promptText="DDD" styleClass="txtFBase">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <Label styleClass="lblBase2" text="NUMERO:">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="txtFnumeroTelefone" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="180.0" promptText="Digite seu numero" styleClass="txtFBase">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
+                              <Label styleClass="lblBase2" text="NUMERO:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtFnumeroTelefone" blendMode="SRC_ATOP" cache="true" prefHeight="45.0" prefWidth="180.0" promptText="(00)00000-0000" styleClass="txtFBase">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
                            </children>
-                        </HBox>
+                        </VBox>
                         <VBox>
                            <children>
                               <Label styleClass="lblBase2" text="NOME:">
@@ -190,6 +172,12 @@
                </children>
             </HBox>
          </children>
+         <FlowPane.margin>
+            <Insets top="1.0" />
+         </FlowPane.margin>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
       </VBox>
    </children>
 </FlowPane>
