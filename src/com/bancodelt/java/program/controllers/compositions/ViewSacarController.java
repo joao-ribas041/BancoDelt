@@ -1,5 +1,10 @@
 package com.bancodelt.java.program.controllers.compositions;
 
+import com.bancodelt.java.config.MascaraTextField;
+import com.bancodelt.java.models.Conta2;
+import com.bancodelt.java.models.alerts.AlertErrorPrototype;
+import com.bancodelt.java.models.alerts.AlertInformationPrototype;
+import com.bancodelt.java.models.alerts.AlertWarningPrototype;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,12 +23,33 @@ public class ViewSacarController implements Initializable {
     @FXML
     private Button btnSacar;
 
+    AlertWarningPrototype alertaAviso;
+    AlertErrorPrototype alertaErro;
+    AlertInformationPrototype alertaInforma;
+    private double valorASacar = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        MascaraTextField.mascaraReal(txtFValor);
     }
 
     @FXML
     private void btnSacarAction(ActionEvent event) {
+        sacar();
+    }
+
+    private void sacar() {
+        if (txtFValor.getText().isEmpty()) {
+            alertaAviso = new AlertWarningPrototype("Alerta", "Informe o valor", "Você não solicitou nenhum valor para saque.");
+        } else {
+            valorASacar = new Double(txtFValor.getText());
+            if(valorASacar > Conta2.getSaldo()) {
+                alertaErro = new AlertErrorPrototype("Erro", "Saldo Insuficiente", "Você não tem saldo suficiente para a transação.");
+            } else {
+                alertaInforma = new AlertInformationPrototype("Saque", "Saque efetuado", "Você sacou " + valorASacar);
+            }
+            
+            
+        }
     }
 }

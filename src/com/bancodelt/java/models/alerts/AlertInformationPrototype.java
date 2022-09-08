@@ -1,22 +1,22 @@
 package com.bancodelt.java.models.alerts;
 
-public class AlertErrorPrototype extends AlertPrototype {
+public class AlertInformationPrototype extends AlertPrototype {
     
-    public AlertErrorPrototype(String titulo, String msgPrincipal, String subMsg) {
-        a2.setTitle(titulo);
-        a2.setHeaderText(msgPrincipal);
-        a2.setContentText(subMsg);
+    public AlertInformationPrototype(String titulo, String msgPrincipal, String subMsg) {
+        a3.setTitle(titulo);
+        a3.setHeaderText(msgPrincipal);
+        a3.setContentText(subMsg);
         System.out.println("Alerta " + msgPrincipal);
-        a2.showAndWait();
+        a3.showAndWait();
     }
     
-    protected AlertErrorPrototype(AlertErrorPrototype alertErrorPrototype) {
+    protected AlertInformationPrototype(AlertInformationPrototype alertErrorPrototype) {
         this.titulo = alertErrorPrototype.getTitulo();
         this.msgPrincipal = alertErrorPrototype.getMsgPrincipal();
         this.subMsg = alertErrorPrototype.getSubMsg();
     }
     
-    public AlertErrorPrototype() {
+    public AlertInformationPrototype() {
         titulo = null;
         msgPrincipal = null;
         subMsg = null;
@@ -32,6 +32,6 @@ public class AlertErrorPrototype extends AlertPrototype {
     
     @Override
     public AlertPrototype clonar() {
-        return new AlertErrorPrototype(this);
+        return new AlertInformationPrototype(this);
     }
 }

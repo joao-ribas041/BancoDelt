@@ -1,5 +1,8 @@
 package com.bancodelt.java.program.controllers.compositions;
 
+import com.bancodelt.java.config.MascaraTextField;
+import com.bancodelt.java.models.Conta2;
+import com.bancodelt.java.models.alerts.AlertWarningPrototype;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,14 +22,27 @@ public class ViewDepositarController implements Initializable {
     private TextField txtFConta;
     @FXML
     private Button btnDepositar;
+    
+    AlertWarningPrototype alertaAviso;
+    private double valorADepositar = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        MascaraTextField.mascaraReal(txtFValor);
     }    
 
     @FXML
     private void btnDepositarAction(ActionEvent event) {
+        depositar();
     }
     
+    private void depositar() {
+        if (txtFValor.getText().isEmpty()) {
+            alertaAviso = new AlertWarningPrototype("Alerta", "Informe o valor", "Você não solicitou nenhum valor para deposito.");
+        } else {
+            valorADepositar = new Double(txtFValor.getText());
+            
+            System.out.println(valorADepositar);
+        }
+    }
 }
