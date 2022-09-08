@@ -1,10 +1,10 @@
 package com.bancodelt.java.models;
 
-public class ContaCorrente extends Conta {
-    
-    public ContaCorrente(int numeroAgencia, int numeroConta, String CPF, String email, String numeroCelular,String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
-        this.numeroAgencia = numeroAgencia;
-        this.numeroConta = numeroConta;
+public class ContaCorrente extends Conta2{
+
+    public ContaCorrente(int numAgencia, int numConta, String CPF, String email, String numeroCelular,String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+        this.numAgencia = numAgencia;
+        this.numConta = numConta;
         this.CPF = CPF;
         this.email = email;
         this.numeroCelular = numeroCelular;

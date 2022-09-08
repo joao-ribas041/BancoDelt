@@ -1,6 +1,6 @@
 package com.bancodelt.java.program.controllers;
 
-import com.bancodelt.java.models.Conta;
+import com.bancodelt.java.models.Conta2;
 import com.bancodelt.java.program.Main;
 import java.io.IOException;
 import java.net.URL;
@@ -79,14 +79,14 @@ public class ViewPrincipalAppController implements Initializable {
     
     Image imgMostrar = new Image(getClass().getResourceAsStream(Main.getDirectoryJavaIcons() + "MOSTRAR.png"));
     Image imgOculto = new Image(getClass().getResourceAsStream(Main.getDirectoryJavaIcons() + "OCULTAR.png"));
-    DecimalFormat df = new DecimalFormat("#.00");
+    DecimalFormat df = new DecimalFormat("###,##0.00");
     
     private boolean viewHide = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lblSaldo.setText(df.format(Conta.getSaldo()));
-        
+        tipoDeConta();
+        lblSaldo.setText(df.format(Conta2.getSaldo()));
         
         ViewHide();
         mouseMenuHomeAction();
@@ -129,14 +129,39 @@ public class ViewPrincipalAppController implements Initializable {
         }
     }
     
+    private void tipoDeConta(){
+        if(Conta2.getTipo() == 1) {
+            fpPIX.setDisable(true);
+            fpPIX.setVisible(false);
+            btnPIX.setDisable(true);
+            btnPIX.setVisible(false);
+            
+            fpPoupanca.setDisable(false);
+            fpPoupanca.setVisible(true);
+            btnPoupanca.setDisable(false);
+            btnPoupanca.setVisible(true);
+        }
+        if(Conta2.getTipo() == 2) {
+            fpPoupanca.setDisable(true);
+            fpPoupanca.setVisible(false);
+            btnPoupanca.setDisable(true);
+            btnPoupanca.setVisible(false);
+            
+            fpPIX.setDisable(false);
+            fpPIX.setVisible(true);
+            btnPIX.setDisable(false);
+            btnPIX.setVisible(true);
+        }
+    }
+    
     private void ViewHide(){
         btnViewHide.setOnMouseEntered((event) -> {
-            btnViewHide.setFitWidth(55);
-            btnViewHide.setFitHeight(55);
+            btnViewHide.setFitWidth(75);
+            btnViewHide.setFitHeight(75);
         });
         btnViewHide.setOnMouseExited((event) -> {
-            btnViewHide.setFitWidth(45);
-            btnViewHide.setFitHeight(45);
+            btnViewHide.setFitWidth(55);
+            btnViewHide.setFitHeight(55);
         });
         
         btnViewHide.setOnMouseClicked((event) -> {
@@ -145,7 +170,7 @@ public class ViewPrincipalAppController implements Initializable {
                 btnViewHide.setImage(imgOculto);
                 viewHide = true;
             } else {
-                lblSaldo.setText(df.format(Conta.getSaldo()));
+                lblSaldo.setText(df.format(Conta2.getSaldo()));
                 btnViewHide.setImage(imgMostrar);
                 viewHide = false;
             }

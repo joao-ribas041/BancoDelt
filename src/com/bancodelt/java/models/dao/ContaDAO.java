@@ -79,10 +79,10 @@ public class ContaDAO {
                 pst.setString(1, CPF);
                 rs = pst.executeQuery();
                 if (rs.next()) {
-                    ContaPoupanca.setNumeroConta(rs.getInt(1));
-                    ContaPoupanca.setNumeroAgencia(rs.getInt(2));
+                    ContaPoupanca.setNumConta(rs.getInt(1));
+                    ContaPoupanca.setNumAgencia(rs.getInt(2));
                     ContaPoupanca.setTipo(rs.getInt(3));
-                    ContaPoupanca.setNumConta(rs.getString(4));
+                    ContaPoupanca.setConta(rs.getString(4));
                     ContaPoupanca.setCPF(rs.getString(5));
                     ContaPoupanca.setEmail(rs.getString(6));
                     ContaPoupanca.setNumeroCelular(rs.getString(7));
@@ -109,10 +109,10 @@ public class ContaDAO {
                 pst.setString(1, CPF);
                 rs = pst.executeQuery();
                 if (rs.next()) {
-                    ContaCorrente.setNumeroConta(rs.getInt(1));
-                    ContaCorrente.setNumeroAgencia(rs.getInt(2));
+                    ContaCorrente.setNumConta(rs.getInt(1));
+                    ContaCorrente.setNumAgencia(rs.getInt(2));
                     ContaCorrente.setTipo(rs.getInt(3));
-                    ContaCorrente.setNumConta(rs.getString(4));
+                    ContaCorrente.setConta(rs.getString(4));
                     ContaCorrente.setCPF(rs.getString(5));
                     ContaCorrente.setEmail(rs.getString(6));
                     ContaCorrente.setNumeroCelular(rs.getString(7));
@@ -131,6 +131,39 @@ public class ContaDAO {
                 Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
                 DBAcess.closeConexao(conexao, pst, rs);
             }
+        }
+    }
+
+    public void CadastrarTitular(int numAgencia, int tipoAcc, String conta, String CPF, String email, String numeroCelular, String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+        conexao = DBAcess.getConexao();
+        //call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',135.45);
+        String sql= "call registra_titular (?,?,?,?,?,?,?,?,?,?,?,?);";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, numAgencia);
+            pst.setInt(2, tipoAcc);
+            pst.setString(3, conta);
+            pst.setString(4, CPF);
+            pst.setString(5, email);
+            pst.setString(6, numeroCelular);
+            pst.setString(7, nomeTitular);
+            pst.setString(8, generoTitular);
+            pst.setString(9, senhaTitular);
+            pst.setString(10, dataNascimento);
+            pst.setString(11, dataCriacaoAcc);
+            pst.setDouble(12, saldo);
+            
+            int add = pst.executeUpdate();
+            if(add > 0) {
+                System.out.println("Usuario cadastrado com sucesso");
+            } else {
+                System.out.println("Erro ao cadastrar usuario");
+            }
+            DBAcess.closeConexao(conexao, pst);
+        } catch (SQLException ex) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro SQL Exception GESTOR");
+            DBAcess.closeConexao(conexao, pst);
         }
     }
 
