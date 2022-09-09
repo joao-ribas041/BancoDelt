@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefWidth="400.0" spacing="1.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ExtratoController">
+<VBox fx:id="caixaExtrato" alignment="CENTER" prefWidth="400.0" spacing="1.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ExtratoController">
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="27.0" prefWidth="400.0" spacing="15.0">
          <children>
-            <Label fx:id="lblData" prefHeight="27.0" prefWidth="115.0" text="01/09/2022">
+            <Label fx:id="lblDataTransacao" prefHeight="27.0" prefWidth="115.0" text="01/09/2022">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

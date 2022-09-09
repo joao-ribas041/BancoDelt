@@ -1,20 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="920.0" styleClass="lblBase2" stylesheets="@../../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewPixPrincipalController">
+<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="920.0" stylesheets="@../../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewPixPrincipalController">
    <children>
-      <FlowPane fx:id="Titulo" alignment="CENTER" hgap="15.0" prefHeight="92.0" prefWidth="710.0" vgap="5.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="64.0" prefWidth="690.0" styleClass="lblBase2" text="PIX">
-               <font>
-                  <Font name="System Bold" size="63.0" />
-               </font>
-            </Label>
-         </children>
-      </FlowPane>
+      <BorderPane fx:id="menuCenter" prefHeight="690.0" prefWidth="920.0">
+         <center>
+            <FlowPane alignment="TOP_CENTER" hgap="45.0" prefHeight="600.0" prefWidth="920.0" vgap="45.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="92.0" prefWidth="891.0" styleClass="lblBase2" text="PIX">
+                     <font>
+                        <Font name="System Bold" size="63.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="110.0" prefWidth="867.0" />
+                  <FlowPane fx:id="fpCadastrarPix" alignment="CENTER" hgap="2.0" prefHeight="145.0" prefWidth="145.0" styleClass="fpButton" vgap="2.0">
+                     <children>
+                        <ImageView fx:id="imgCadPIX" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons/CADASTRAR-PIX.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="lblBase2" text="CADASTRAR&#10;CHAVE" textAlignment="CENTER" textFill="#b2edff">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
+                  <FlowPane fx:id="fpPagarPix" alignment="CENTER" hgap="2.0" prefHeight="145.0" prefWidth="145.0" styleClass="fpButton" vgap="2.0">
+                     <children>
+                        <ImageView fx:id="imgPagarPIX" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons/PAGAR-PIX.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="lblBase2" text="PAGAR" textAlignment="CENTER" textFill="#b2edff">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
+                  <FlowPane fx:id="fpReceberPix" alignment="CENTER" hgap="2.0" prefHeight="145.0" prefWidth="145.0" styleClass="fpButton" vgap="2.0">
+                     <children>
+                        <ImageView fx:id="imgReceberPIX" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons/RECEBER-PIX.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="lblBase2" text="RECEBER" textAlignment="CENTER" textFill="#b2edff">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
+               </children>
+            </FlowPane>
+         </center>
+      </BorderPane>
    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </FlowPane>

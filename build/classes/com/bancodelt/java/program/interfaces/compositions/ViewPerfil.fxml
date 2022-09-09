@@ -65,7 +65,7 @@
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font></Label>
-                              <TextField fx:id="txtFCPF" prefHeight="26.0" prefWidth="177.0" styleClass="txtFBase2">
+                              <TextField fx:id="txtFCPF" editable="false" prefHeight="26.0" prefWidth="177.0" styleClass="txtFBase2">
                                  <font>
                                     <Font size="25.0" />
                                  </font></TextField>
@@ -77,7 +77,7 @@
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font></Label>
-                              <TextField fx:id="txtFNomeTitular" prefHeight="26.0" prefWidth="130.0" styleClass="txtFBase2">
+                              <TextField fx:id="txtFNomeTitular" editable="false" prefHeight="26.0" prefWidth="130.0" styleClass="txtFBase2">
                                  <font>
                                     <Font size="25.0" />
                                  </font></TextField>
@@ -97,7 +97,7 @@
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Label>
-                  <TextField fx:id="txtFEmail" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase2">
+                  <TextField fx:id="txtFEmail" editable="false" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase2">
                      <font>
                         <Font size="25.0" />
                      </font></TextField>
@@ -109,7 +109,7 @@
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Label>
-                  <TextField fx:id="txtFNumeroTel" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase2">
+                  <TextField fx:id="txtFNumeroTel" editable="false" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase2">
                      <font>
                         <Font size="25.0" />
                      </font></TextField>
@@ -125,7 +125,7 @@
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Label>
-                  <TextField fx:id="txtFGenero" styleClass="txtFBase2">
+                  <TextField fx:id="txtFGenero" editable="false" styleClass="txtFBase2">
                      <font>
                         <Font size="25.0" />
                      </font></TextField>
@@ -137,7 +137,7 @@
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Label>
-                  <TextField fx:id="txtFNascimento" styleClass="txtFBase2">
+                  <TextField fx:id="txtFNascimento" editable="false" styleClass="txtFBase2">
                      <font>
                         <Font size="25.0" />
                      </font></TextField>
