@@ -1,10 +1,10 @@
 package com.bancodelt.java.models;
 
-public class ContaPoupanca extends Conta {
-    
-    public ContaPoupanca(int numeroAgencia, int numeroConta, String CPF, String email, String numeroCelular, String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
-        this.numeroAgencia = numeroAgencia;
-        this.numeroConta = numeroConta;
+public class ContaPoupanca extends Conta2{
+
+    public ContaPoupanca(int numAgencia, int numConta, String CPF, String email, String numeroCelular, String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+        this.numAgencia = numAgencia;
+        this.numConta = numConta;
         this.CPF = CPF;
         this.email = email;
         this.numeroCelular = numeroCelular;
@@ -18,7 +18,4 @@ public class ContaPoupanca extends Conta {
     }
     
     void remuneracao() {    }
-    
-    
-    
 }

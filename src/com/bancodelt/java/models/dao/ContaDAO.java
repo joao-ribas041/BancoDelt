@@ -70,8 +70,7 @@ public class ContaDAO {
 
     public void resgatarDadosTitular(String CPF) {
         conexao = DBAcess.getConexao();
-        String sql = "select * from usuario where cpf=?;";
-        String sql2 = "select * from banco where id_agencia=1;";
+        String sql = "select usuario.*, banco.agencia from usuario, banco where cpf=?;";
         if (getTipo() == 1) {
             System.out.println("Poupança");
             try {
@@ -79,10 +78,10 @@ public class ContaDAO {
                 pst.setString(1, CPF);
                 rs = pst.executeQuery();
                 if (rs.next()) {
-                    ContaPoupanca.setNumeroConta(rs.getInt(1));
-                    ContaPoupanca.setNumeroAgencia(rs.getInt(2));
+                    ContaPoupanca.setNumConta(rs.getInt(1));
+                    ContaPoupanca.setNumAgencia(rs.getInt(2));
                     ContaPoupanca.setTipo(rs.getInt(3));
-                    ContaPoupanca.setNumConta(rs.getString(4));
+                    ContaPoupanca.setConta(rs.getString(4));
                     ContaPoupanca.setCPF(rs.getString(5));
                     ContaPoupanca.setEmail(rs.getString(6));
                     ContaPoupanca.setNumeroCelular(rs.getString(7));
@@ -91,6 +90,7 @@ public class ContaDAO {
                     ContaPoupanca.setDataNascimento(rs.getString(11));
                     ContaPoupanca.setDataCriacaoAcc(rs.getString(12));
                     ContaPoupanca.setSaldo(rs.getDouble(13));
+                    ContaPoupanca.setAgencia(rs.getString(14));
                     System.out.println("Sucesso ao resgatar os dados do usuario");
                     DBAcess.closeConexao(conexao, pst, rs);
                 } else {
@@ -109,10 +109,10 @@ public class ContaDAO {
                 pst.setString(1, CPF);
                 rs = pst.executeQuery();
                 if (rs.next()) {
-                    ContaCorrente.setNumeroConta(rs.getInt(1));
-                    ContaCorrente.setNumeroAgencia(rs.getInt(2));
+                    ContaCorrente.setNumConta(rs.getInt(1));
+                    ContaCorrente.setNumAgencia(rs.getInt(2));
                     ContaCorrente.setTipo(rs.getInt(3));
-                    ContaCorrente.setNumConta(rs.getString(4));
+                    ContaCorrente.setConta(rs.getString(4));
                     ContaCorrente.setCPF(rs.getString(5));
                     ContaCorrente.setEmail(rs.getString(6));
                     ContaCorrente.setNumeroCelular(rs.getString(7));
@@ -121,6 +121,7 @@ public class ContaDAO {
                     ContaCorrente.setDataNascimento(rs.getString(11));
                     ContaCorrente.setDataCriacaoAcc(rs.getString(12));
                     ContaCorrente.setSaldo(rs.getDouble(13));
+                    ContaCorrente.setAgencia(rs.getString(14));
                     System.out.println("Sucesso ao resgatar os dados do usuario");
                     DBAcess.closeConexao(conexao, pst, rs);
                 } else {
@@ -131,6 +132,125 @@ public class ContaDAO {
                 Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
                 DBAcess.closeConexao(conexao, pst, rs);
             }
+        }
+    }
+
+    public void CadastrarTitular(int numAgencia, int tipoAcc, String conta, String CPF, String email, String numeroCelular, String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+        conexao = DBAcess.getConexao();
+        //call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',135.45);
+        String sql = "call registra_titular (?,?,?,?,?,?,?,?,?,?,?,?);";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, numAgencia);
+            pst.setInt(2, tipoAcc);
+            pst.setString(3, conta);
+            pst.setString(4, CPF);
+            pst.setString(5, email);
+            pst.setString(6, numeroCelular);
+            pst.setString(7, nomeTitular);
+            pst.setString(8, generoTitular);
+            pst.setString(9, senhaTitular);
+            pst.setString(10, dataNascimento);
+            pst.setString(11, dataCriacaoAcc);
+            pst.setDouble(12, saldo);
+
+            int add = pst.executeUpdate();
+            if (add > 0) {
+                System.out.println("Usuario cadastrado com sucesso");
+            } else {
+                System.out.println("Erro ao cadastrar usuario");
+            }
+            DBAcess.closeConexao(conexao, pst);
+        } catch (SQLException ex) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro SQL Exception GESTOR");
+            DBAcess.closeConexao(conexao, pst);
+        }
+    }
+
+    public void atualizarSaldoPessoal(String conta, double valor) {
+        conexao = DBAcess.getConexao();
+        String sql = "update usuario set saldo=? where conta=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+
+            pst.setDouble(1, valor);
+            pst.setString(2, conta);
+
+            int add = pst.executeUpdate();
+            if (add > 0) {
+                System.out.println("Transação efetuado com sucesso");
+            } else {
+                System.out.println("Transação não efetuado.");
+            }
+            DBAcess.closeConexao(conexao, pst);
+        } catch (SQLException e) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBAcess.closeConexao(conexao, pst);
+        }
+    }
+
+    public void atualizarSaldoDepositoExtrangeiro(String contaOrigem, String contaDestino, double saldoOrigem, double valorDestino) {
+        conexao = DBAcess.getConexao();
+        String sql = "update usuario set saldo=? where conta=?;";
+        try {
+            pst = conexao.prepareStatement(sql);
+
+            pst.setDouble(1, saldoOrigem);
+            pst.setString(2, contaOrigem);
+
+            int add = pst.executeUpdate();
+            if (add > 0) {
+                System.out.println("Deposito efetuado com sucesso");
+            } else {
+                System.out.println("Deposito não efetuado.");
+            }
+            DBAcess.closeConexao(conexao, pst);
+
+            conexao = DBAcess.getConexao();
+            sql = "update usuario set saldo=? where conta=?;";
+
+            pst = conexao.prepareStatement(sql);
+
+            pst.setDouble(1, valorDestino);
+            pst.setString(2, contaDestino);
+
+            add = pst.executeUpdate();
+            if (add > 0) {
+                System.out.println("Deposito efetuado com sucesso");
+            } else {
+                System.out.println("Deposito não efetuado.");
+            }
+            DBAcess.closeConexao(conexao, pst);
+
+        } catch (SQLException e) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBAcess.closeConexao(conexao, pst);
+        }
+    }
+
+    public double contaExiste(String Conta) {
+        double valorAtual = 0;
+        conexao = DBAcess.getConexao();
+        String sql = "select saldo from usuario where conta=?;";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, Conta);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                System.out.println("Conta existe");
+                valorAtual = rs.getDouble(1);
+                DBAcess.closeConexao(conexao, pst, rs);
+                return valorAtual;
+            } else {
+                System.out.println("Conta não existe");
+                DBAcess.closeConexao(conexao, pst, rs);
+                return valorAtual;
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBAcess.closeConexao(conexao, pst);
+            return valorAtual;
         }
     }
 

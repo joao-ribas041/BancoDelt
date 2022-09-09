@@ -6,6 +6,7 @@ public abstract class AlertPrototype {
     
     protected Alert a1 = new Alert(Alert.AlertType.WARNING);
     protected Alert a2 = new Alert(Alert.AlertType.ERROR);
+    protected Alert a3 = new Alert(Alert.AlertType.INFORMATION);
     
     protected String titulo, msgPrincipal, subMsg;
     

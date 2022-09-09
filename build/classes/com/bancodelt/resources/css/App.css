@@ -56,6 +56,13 @@
     -fx-text-fill: white;
     -fx-prompt-text-fill: white;
 }
+.txtFBase2{
+    -fx-background-color: transparent;
+    -fx-border-color: #5459ff;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill: black;
+}
 
 .lblBase1{
     -fx-text-fill: #02bdff;

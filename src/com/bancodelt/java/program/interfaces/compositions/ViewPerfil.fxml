@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -14,50 +13,74 @@
    <children>
       <FlowPane fx:id="Titulo" alignment="CENTER" hgap="15.0" prefHeight="92.0" prefWidth="710.0" vgap="5.0">
          <children>
-            <Label alignment="CENTER" prefHeight="64.0" prefWidth="690.0" styleClass="lblBase2" text="Perfil">
+            <Label alignment="CENTER" prefHeight="65.0" prefWidth="690.0" styleClass="lblBase2" text="Perfil">
                <font>
                   <Font name="System Bold" size="63.0" />
                </font>
             </Label>
          </children>
       </FlowPane>
-      <HBox prefHeight="300.0" prefWidth="700.0">
+      <HBox prefHeight="311.0" prefWidth="800.0">
          <children>
-            <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="325.0" fitWidth="311.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../resources/images/PERFIL.png" />
                </image>
             </ImageView>
-            <VBox prefHeight="327.0" prefWidth="386.0">
+            <VBox prefHeight="311.0" prefWidth="467.0">
                <children>
                   <FlowPane fx:id="FPConta" alignment="CENTER" hgap="15.0" prefHeight="142.0" prefWidth="374.0" vgap="5.0">
                      <children>
-                        <VBox fx:id="VBoxAgencia" alignment="CENTER" prefHeight="60.0" prefWidth="126.0">
+                        <VBox fx:id="VBoxAgencia" alignment="CENTER" prefHeight="85.0" prefWidth="132.0">
                            <children>
-                              <Label fx:id="lblAgencia" styleClass="lblBase2" text="Agencia:" />
-                              <TextField fx:id="txtFAgencia" editable="false" prefHeight="26.0" prefWidth="122.0" styleClass="txtFBase" />
+                              <Label fx:id="lblAgencia" styleClass="lblBase2" text="Agencia:">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font></Label>
+                              <TextField fx:id="txtFAgencia" editable="false" prefHeight="26.0" prefWidth="122.0" styleClass="txtFBase2">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font></TextField>
                            </children>
                         </VBox>
                         <VBox fx:id="VBoxConta" alignment="CENTER" prefHeight="60.0" prefWidth="202.0">
                            <children>
-                              <Label fx:id="lblConta" styleClass="lblBase2" text="Conta:" />
-                              <TextField fx:id="txtFConta" editable="false" prefHeight="26.0" prefWidth="138.0" styleClass="txtFBase" />
+                              <Label fx:id="lblConta" styleClass="lblBase2" text="Conta:">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font></Label>
+                              <TextField fx:id="txtFConta" editable="false" prefHeight="26.0" prefWidth="138.0" styleClass="txtFBase2">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font></TextField>
                            </children>
                         </VBox>
                      </children>
                   </FlowPane>
                   <FlowPane alignment="CENTER" hgap="15.0" prefHeight="114.0" prefWidth="362.0" vgap="5.0">
                      <children>
-                        <VBox fx:id="VBoxCPF" alignment="CENTER" prefHeight="60.0" prefWidth="250.0">
+                        <VBox fx:id="VBoxCPF" alignment="CENTER" prefHeight="60.0" prefWidth="300.0">
                            <children>
-                              <Label fx:id="lblCPF" styleClass="lblBase2" text="CPF:" />
-                              <TextField fx:id="txtFCPF" prefHeight="26.0" prefWidth="177.0" styleClass="txtFBase" />
+                              <Label fx:id="lblCPF" styleClass="lblBase2" text="CPF:">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font></Label>
+                              <TextField fx:id="txtFCPF" editable="false" prefHeight="26.0" prefWidth="177.0" styleClass="txtFBase2">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font></TextField>
                            </children>
                         </VBox>
-                        <VBox fx:id="VBoxNome" alignment="CENTER" prefHeight="60.0" prefWidth="250.0">
+                        <VBox fx:id="VBoxNome" alignment="CENTER" prefHeight="60.0" prefWidth="300.0">
                            <children>
-                              <Label fx:id="lblNomeTitular" styleClass="lblBase2" text="Nome:" />
-                              <TextField fx:id="txtFNomeTitular" prefHeight="26.0" prefWidth="130.0" styleClass="txtFBase" />
+                              <Label fx:id="lblNomeTitular" styleClass="lblBase2" text="Nome:">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font></Label>
+                              <TextField fx:id="txtFNomeTitular" editable="false" prefHeight="26.0" prefWidth="130.0" styleClass="txtFBase2">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font></TextField>
                            </children>
                         </VBox>
                      </children>
@@ -66,34 +89,58 @@
             </VBox>
          </children>
       </HBox>
-      <FlowPane alignment="CENTER" hgap="15.0" prefHeight="100.0" prefWidth="700.0" vgap="5.0">
+      <FlowPane alignment="CENTER" hgap="15.0" prefHeight="105.0" prefWidth="700.0" vgap="5.0">
          <children>
-            <VBox fx:id="VBoxEmail" prefHeight="58.0" prefWidth="263.0">
+            <VBox fx:id="VBoxEmail" prefHeight="85.0" prefWidth="300.0">
                <children>
-                  <Label fx:id="lblEmail" styleClass="lblBase2" text="E-mail:" />
-                  <TextField fx:id="txtFEmail" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase" />
+                  <Label fx:id="lblEmail" styleClass="lblBase2" text="E-mail:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                  <TextField fx:id="txtFEmail" editable="false" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase2">
+                     <font>
+                        <Font size="25.0" />
+                     </font></TextField>
                </children>
             </VBox>
-            <VBox fx:id="VBoxNumero" prefHeight="58.0" prefWidth="183.0">
+            <VBox fx:id="VBoxNumero" prefHeight="86.0" prefWidth="275.0">
                <children>
-                  <Label fx:id="lblNumero" styleClass="lblBase2" text="Numero telefone:" />
-                  <TextField fx:id="txtFNumero" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase" />
+                  <Label fx:id="lblNumero" styleClass="lblBase2" text="Numero telefone:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                  <TextField fx:id="txtFNumeroTel" editable="false" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase2">
+                     <font>
+                        <Font size="25.0" />
+                     </font></TextField>
                </children>
             </VBox>
          </children>
       </FlowPane>
       <FlowPane alignment="CENTER" hgap="15.0" orientation="VERTICAL" prefHeight="100.0" prefWidth="700.0" vgap="5.0">
          <children>
-            <VBox fx:id="VBoxGenero" alignment="CENTER" prefHeight="60.0" prefWidth="281.0">
+            <VBox fx:id="VBoxGenero" alignment="CENTER" prefHeight="86.0" prefWidth="300.0">
                <children>
-                  <Label fx:id="lblGenero" styleClass="lblBase2" text="Genero" />
-                  <ComboBox fx:id="cbGenero" prefHeight="26.0" prefWidth="200.0" />
+                  <Label fx:id="lblGenero" styleClass="lblBase2" text="Genero">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                  <TextField fx:id="txtFGenero" editable="false" styleClass="txtFBase2">
+                     <font>
+                        <Font size="25.0" />
+                     </font></TextField>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="70.0" prefWidth="213.0">
+            <VBox alignment="CENTER" prefHeight="85.0" prefWidth="275.0">
                <children>
-                  <Label fx:id="lblNascimento" styleClass="lblBase2" text="Data de nascimento" />
-                  <TextField fx:id="txtFNascimento" styleClass="txtFBase" />
+                  <Label fx:id="lblNascimento" styleClass="lblBase2" text="Data de nascimento">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                  <TextField fx:id="txtFNascimento" editable="false" styleClass="txtFBase2">
+                     <font>
+                        <Font size="25.0" />
+                     </font></TextField>
                </children>
             </VBox>
          </children>

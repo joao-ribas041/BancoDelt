@@ -25,15 +25,15 @@
                <children>
                   <Label fx:id="lblRS" text="R$">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
                   <Label fx:id="lblSaldo" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" text="*****">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="System Bold" size="35.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="btnViewHide" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnViewHide" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../resources/icons/OCULTAR.png" />
                      </image>

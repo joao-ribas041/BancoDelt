@@ -6,6 +6,7 @@ import com.bancodelt.java.models.ContaPoupanca;
 import com.bancodelt.java.models.EstiloAcc;
 import com.bancodelt.java.config.MascaraTextField;
 import com.bancodelt.java.models.alerts.AlertWarningPrototype;
+import com.bancodelt.java.models.dao.ContaDAO;
 import com.bancodelt.java.program.Main;
 import java.io.IOException;
 import java.net.URL;
@@ -65,8 +66,8 @@ public class ViewRegisterAppController implements Initializable {
     private List<EstiloAcc> estilosAcc = new ArrayList<>();
     private ObservableList<EstiloAcc> obsEstiloAcc;
 
-    private int numeroAgencia, numeroConta;
-    private String CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc;
+    private int numAgencia, numConta;
+    private String Conta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc;
     private double saldo;
     private byte tipo;
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -75,9 +76,8 @@ public class ViewRegisterAppController implements Initializable {
     Main m = new Main();
     ViewOpenAppController voac = new ViewOpenAppController();
     AlertWarningPrototype alertaAviso;
-
-    ContaCorrente cc;
-    ContaPoupanca cp;
+    
+    ContaDAO cDAO = new ContaDAO();
 
     private Connection conexao = null;
     private PreparedStatement pst = null;
@@ -89,8 +89,7 @@ public class ViewRegisterAppController implements Initializable {
         MouseBarEvents();
         txtFCPF.setEditable(false);
         txtFCPF.setText(ViewOpenAppController.getCPFinput());
-        numeroAgencia = 0001;
-        numeroConta = 000000000;
+        numAgencia = 1;
         iniciarCategorias();
 
         MascaraTextField.mascaraEmail(txtFEmail);
@@ -144,12 +143,12 @@ public class ViewRegisterAppController implements Initializable {
                                                 saldo = 0;
                                                 if (cbEstiloDaConta.getValue().getEstilo().equals("Conta Corrente")) {
                                                     tipo = (byte) cbEstiloDaConta.getValue().getId();
-                                                    numeroConta += 1;
+                                                    Conta = "01000000-0";
                                                     System.out.println("");
                                                     System.out.println("Conta corrente");
                                                     System.out.println("");
-                                                    System.out.println("Numero agencia: " + numeroAgencia);
-                                                    System.out.println("Numero conta: " + numeroConta);
+                                                    System.out.println("Numero agencia: " + numAgencia);
+                                                    System.out.println("Numero conta: " + Conta);
                                                     System.out.println("CPF: " + CPF);
                                                     System.out.println("E-mail: " + email);
                                                     System.out.println("Numero Celular: " + numeroCelular);
@@ -160,7 +159,7 @@ public class ViewRegisterAppController implements Initializable {
                                                     System.out.println("Data Criacão: " + dataCriacaoAcc);
                                                     System.out.println("Saldo: " + saldo);
                                                     System.out.println("Tipo: " + tipo);
-                                                    cc = new ContaCorrente(numeroAgencia, numeroConta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
+                                                    cDAO.CadastrarTitular(numAgencia, tipo, Conta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
                                                     Main.getProgram().close();
                                                     m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
                                                 }
@@ -168,9 +167,9 @@ public class ViewRegisterAppController implements Initializable {
                                                     System.out.println("");
                                                     System.out.println("Conta poupança");
                                                     System.out.println("");
-                                                    numeroConta += 1;
-                                                    System.out.println("Numero agencia: " + numeroAgencia);
-                                                    System.out.println("Numero conta: " + numeroConta);
+                                                    Conta = "01000000-0";
+                                                    System.out.println("Numero agencia: " + numAgencia);
+                                                    System.out.println("Numero conta: " + numConta);
                                                     System.out.println("CPF: " + CPF);
                                                     System.out.println("E-mail: " + email);
                                                     System.out.println("Numero Celular: " + numeroCelular);
@@ -181,7 +180,7 @@ public class ViewRegisterAppController implements Initializable {
                                                     System.out.println("Data Criacão: " + dataCriacaoAcc);
                                                     System.out.println("Saldo: " + saldo);
                                                     System.out.println("Tipo: " + tipo);
-                                                    cp = new ContaPoupanca(numeroAgencia, numeroConta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
+                                                    cDAO.CadastrarTitular(numAgencia, tipo, Conta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo);
                                                     Main.getProgram().close();
                                                     m.switchTelas(new Stage(), "ViewPrincipalApp.fxml");
                                                 }
