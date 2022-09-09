@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="920.0" stylesheets="@../../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewPixCadastrarController">
+   <children>
+      <FlowPane fx:id="Titulo" alignment="CENTER" hgap="15.0" prefHeight="92.0" prefWidth="710.0" vgap="5.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="64.0" prefWidth="690.0" styleClass="lblBase2" text="PIX">
+               <font>
+                  <Font name="System Bold" size="63.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" hgap="10.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="920.0" vgap="20.0">
+         <children>
+            <Label prefHeight="64.0" prefWidth="690.0" styleClass="lblBase2" text="CHAVES CADASTRADAS">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <VBox fx:id="VBoxCPF" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="300.0" spacing="5.0">
+               <children>
+                  <Label fx:id="lblCPF" styleClass="lblBase2" text="CPF:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFCPF" prefHeight="54.0" prefWidth="609.0" styleClass="txtFBase2">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnCadastrarCPF" mnemonicParsing="false" styleClass="bntBase" text="CADASTRAR CPF:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxNumero" alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="275.0" spacing="15.0">
+               <children>
+                  <Label fx:id="lblNumero" styleClass="lblBase2" text="Numero telefone:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFNumeroTel" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase2">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnCadastrarNumero" mnemonicParsing="false" styleClass="bntBase" text="CADASTRAR NUMERO:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxEmail" alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="300.0" spacing="15.0">
+               <children>
+                  <Label fx:id="lblEmail" styleClass="lblBase2" text="E-mail:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFEmail" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase2">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnCadastrarEmail" mnemonicParsing="false" styleClass="bntBase" text="CADASTRAR E-MAIL:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children></FlowPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</FlowPane>

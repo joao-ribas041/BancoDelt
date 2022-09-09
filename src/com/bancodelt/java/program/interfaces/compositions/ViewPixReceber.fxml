@@ -9,35 +9,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="920.0" styleClass="fpButton" stylesheets="@../../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewDepositarController">
+<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="920.0" styleClass="fpButton" stylesheets="@../../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewPixReceberController">
    <children>
       <FlowPane fx:id="Titulo" alignment="CENTER" hgap="15.0" prefHeight="92.0" prefWidth="710.0" vgap="5.0">
          <children>
-            <Label alignment="CENTER" prefHeight="64.0" prefWidth="690.0" styleClass="lblBase2" text="Depositar">
+            <Label alignment="CENTER" prefHeight="64.0" prefWidth="690.0" styleClass="lblBase2" text="Receber PIX">
                <font>
                   <Font name="System Bold" size="63.0" />
                </font>
             </Label>
          </children>
       </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="600.0" prefWidth="920.0">
+      <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="600.0" prefWidth="920.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="276.0" prefWidth="626.0" spacing="30.0">
+            <Label styleClass="lblBase2" text="Digite o valor que deseja receber:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" prefHeight="203.0" prefWidth="626.0" spacing="30.0">
                <children>
-                  <HBox spacing="5.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="80.0" prefWidth="368.0" text="CONTA:">
-                           <font>
-                              <Font name="System Bold" size="50.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtFConta" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" promptText="000000-0" styleClass="txtFBase2">
-                           <font>
-                              <Font name="System Bold" size="40.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
                   <HBox spacing="5.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="80.0" prefWidth="135.0" text="R$">
@@ -52,7 +43,7 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <Button fx:id="btnDepositar" mnemonicParsing="false" onAction="#btnDepositarAction" styleClass="bntBase" text="DEPOSITAR">
+                  <Button fx:id="btnReceber" mnemonicParsing="false" onAction="#btnSacarAction" styleClass="bntBase" text="RECEBER">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>

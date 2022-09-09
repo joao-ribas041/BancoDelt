@@ -1,3 +1,6 @@
+-- 1 para modo safe(original)
+SET SQL_SAFE_UPDATES = 0;
+
 drop database if exists db_BancoDelt;
 Create database db_BancoDelt;
 use db_BancoDelt;
@@ -79,8 +82,16 @@ delimiter ;
 call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',135.45);
 
 
+select usuario.*, banco.agencia from usuario, banco where cpf='000.000.000-01';
+select * from usuario where cpf='000.000.000-01';
+select usuario.*, banco.agencia from usuario, banco;
+
+update usuario set saldo=2 where conta='01011123-1';
+
+select saldo from usuario where conta='01011123-1';
 
 
-
+update usuario set saldo=49 where conta='01011123-1';
+update usuario set saldo=2 where conta='01011123-2';
 
 

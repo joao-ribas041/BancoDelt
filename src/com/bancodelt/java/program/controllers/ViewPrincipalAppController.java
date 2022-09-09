@@ -81,12 +81,11 @@ public class ViewPrincipalAppController implements Initializable {
     Image imgOculto = new Image(getClass().getResourceAsStream(Main.getDirectoryJavaIcons() + "OCULTAR.png"));
     DecimalFormat df = new DecimalFormat("###,##0.00");
     
-    private boolean viewHide = false;
+    private boolean viewHide = true;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tipoDeConta();
-        lblSaldo.setText(df.format(Conta2.getSaldo()));
         
         ViewHide();
         mouseMenuHomeAction();
@@ -259,7 +258,6 @@ public class ViewPrincipalAppController implements Initializable {
     
     private void carregarSubTelas(String tela){
         Parent root = null;
-        
         try {
             root = FXMLLoader.load(getClass().getResource(Main.getDirectoryJavaInterfacesCompositions() + tela));
         } catch (IOException ex) {

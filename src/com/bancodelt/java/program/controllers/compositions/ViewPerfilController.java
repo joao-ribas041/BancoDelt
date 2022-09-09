@@ -66,7 +66,8 @@ public class ViewPerfilController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //txtFConta.setText(Conta2.getNumConta());
+        txtFAgencia.setText(Conta2.getAgencia());
+        txtFConta.setText(Conta2.getConta());
         txtFCPF.setText(Conta2.getCPF());
         txtFNomeTitular.setText(Conta2.getNomeTitular());
         txtFEmail.setText(Conta2.getEmail());

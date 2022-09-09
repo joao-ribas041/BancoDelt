@@ -6,10 +6,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public class MascaraTextField extends TextField {
-    
+
     public static void mascaraNome(TextField textField) {
         textField.setOnKeyTyped((KeyEvent event) -> {
-            if("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ".contains(event.getCharacter()) == false) {
+            if ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ".contains(event.getCharacter()) == false) {
                 event.consume();
             }
         });
@@ -36,7 +36,7 @@ public class MascaraTextField extends TextField {
             }
         });
     }
-    
+
     public static void mascaraEmail(TextField textField) {
         textField.setOnKeyTyped((KeyEvent event) -> {
             if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz._-@".contains(event.getCharacter()) == false) {
@@ -226,5 +226,35 @@ public class MascaraTextField extends TextField {
             }
         });
     }
-    
+
+    public static void mascaraConta(TextField textField) {
+        String val = "";
+        textField.setOnKeyTyped((KeyEvent event) -> {
+            if ("0123456789".contains(event.getCharacter()) == false) {
+                event.consume();
+            }
+            if (event.getCharacter().trim().length() == 0) { // apagando
+                if (textField.getText().length() == 9) {
+                    textField.setText(textField.getText().substring(0, 8));
+                    textField.positionCaret(textField.getText().length());
+                }
+            } else {
+                if (textField.getText().length() == 10) {
+                    event.consume();
+                }
+
+                if (textField.getText().length() == 8) {
+                    textField.setText(textField.getText() + "-");
+                    textField.positionCaret(textField.getText().length());
+                }
+            }
+        });
+        textField.setOnKeyReleased((KeyEvent event) -> {
+            if (!textField.getText().matches("\\d-*")) {
+                textField.setText(textField.getText().replaceAll("^\\d-]", ""));
+                textField.positionCaret(textField.getText().length());
+            }
+        });
+    }
+
 }
