@@ -18,6 +18,9 @@ public class ContaDAO {
     private ResultSet rs = null;
     private Statement st = null;
 
+    private static int idConta = 0;
+    private static boolean contaExiste = false;
+
     private int tipo;
 
     public boolean jaTemConta(String CPF) {
@@ -63,6 +66,42 @@ public class ContaDAO {
             }
         } catch (SQLException e) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBAcess.closeConexao(conexao, pst);
+            return false;
+        }
+    }
+
+    public boolean CadastrarTitular(int numAgencia, int tipoAcc, String conta, String CPF, String email, String numeroCelular, String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+        conexao = DBAcess.getConexao();
+        String sql = "call registra_titular (?,?,?,?,?,?,?,?,?,?,?,?);";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, numAgencia);
+            pst.setInt(2, tipoAcc);
+            pst.setString(3, conta);
+            pst.setString(4, CPF);
+            pst.setString(5, email);
+            pst.setString(6, numeroCelular);
+            pst.setString(7, nomeTitular);
+            pst.setString(8, generoTitular);
+            pst.setString(9, senhaTitular);
+            pst.setString(10, dataNascimento);
+            pst.setString(11, dataCriacaoAcc);
+            pst.setDouble(12, saldo);
+
+            int add = pst.executeUpdate();
+            if (add > 0) {
+                System.out.println("Usuario cadastrado com sucesso");
+                DBAcess.closeConexao(conexao, pst);
+                return true;
+            } else {
+                System.out.println("Erro ao cadastrar usuario");
+                DBAcess.closeConexao(conexao, pst);
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro SQL Exception GESTOR");
             DBAcess.closeConexao(conexao, pst);
             return false;
         }
@@ -135,36 +174,24 @@ public class ContaDAO {
         }
     }
 
-    public void CadastrarTitular(int numAgencia, int tipoAcc, String conta, String CPF, String email, String numeroCelular, String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
+    public void resgatarSaldoTitular(String CPF) {
         conexao = DBAcess.getConexao();
-        //call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',135.45);
-        String sql = "call registra_titular (?,?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "select usuario.saldo from usuario where cpf=?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setInt(1, numAgencia);
-            pst.setInt(2, tipoAcc);
-            pst.setString(3, conta);
-            pst.setString(4, CPF);
-            pst.setString(5, email);
-            pst.setString(6, numeroCelular);
-            pst.setString(7, nomeTitular);
-            pst.setString(8, generoTitular);
-            pst.setString(9, senhaTitular);
-            pst.setString(10, dataNascimento);
-            pst.setString(11, dataCriacaoAcc);
-            pst.setDouble(12, saldo);
-
-            int add = pst.executeUpdate();
-            if (add > 0) {
-                System.out.println("Usuario cadastrado com sucesso");
+            pst.setString(1, CPF);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                ContaPoupanca.setSaldo(rs.getDouble(1));
+                System.out.println("Sucesso ao resgatar o novo saldo");
+                DBAcess.closeConexao(conexao, pst, rs);
             } else {
-                System.out.println("Erro ao cadastrar usuario");
+                System.out.println("Erro ao resgatar o novo saldo");
+                DBAcess.closeConexao(conexao, pst, rs);
             }
-            DBAcess.closeConexao(conexao, pst);
-        } catch (SQLException ex) {
-            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Erro SQL Exception GESTOR");
-            DBAcess.closeConexao(conexao, pst);
+        } catch (SQLException e) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBAcess.closeConexao(conexao, pst, rs);
         }
     }
 
@@ -232,7 +259,7 @@ public class ContaDAO {
     public double contaExiste(String Conta) {
         double valorAtual = 0;
         conexao = DBAcess.getConexao();
-        String sql = "select saldo from usuario where conta=?;";
+        String sql = "select saldo, id_usuario from usuario where conta=?;";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, Conta);
@@ -240,16 +267,20 @@ public class ContaDAO {
             if (rs.next()) {
                 System.out.println("Conta existe");
                 valorAtual = rs.getDouble(1);
+                setIdConta(rs.getInt(2));
+                setContaExiste(true);
                 DBAcess.closeConexao(conexao, pst, rs);
                 return valorAtual;
             } else {
                 System.out.println("Conta não existe");
                 DBAcess.closeConexao(conexao, pst, rs);
+                setContaExiste(false);
                 return valorAtual;
             }
         } catch (SQLException e) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
             DBAcess.closeConexao(conexao, pst);
+            setContaExiste(false);
             return valorAtual;
         }
     }
@@ -260,5 +291,21 @@ public class ContaDAO {
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
+    }
+
+    public static int getIdConta() {
+        return idConta;
+    }
+
+    public static void setIdConta(int idConta) {
+        ContaDAO.idConta = idConta;
+    }
+
+    public static boolean isContaExiste() {
+        return contaExiste;
+    }
+
+    public static void setContaExiste(boolean contaExiste) {
+        ContaDAO.contaExiste = contaExiste;
     }
 }

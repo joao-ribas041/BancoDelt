@@ -45,7 +45,7 @@ create table if not exists extrato(
     data_transacao varchar(10) not null,
     tipo_transacao varchar(20) not null,
     valor_transacao double not null,
-    saldo_anterior double not null,
+    -- saldo_anterior double not null,
     saldo_posterior double not null,
     fk_usuario int not null references usuario(id_usuario),
     primary key (id_extrato)
@@ -69,7 +69,14 @@ insert into estilo_conta (id_estilo, estilo_acc) values
 
 insert into usuario (fk_agencia, fk_tipoacc, conta, cpf, email, celular, nome_titular, sexo, senha, dnascimento, dcriacao, saldo) values 
 (1, 1, '01011123-1', '000.000.000-01', '01@gmail.com','(41)12345-6789','ADMIN POUPANÇA','Masculino','123','01/01/2022','01/01/2022',1.33),
-(1, 2, '01011123-2', '000.000.000-02', '02@gmail.com','(42)12345-6789','ADMIN CORRENTE','Masculino','123','02/02/2022','02/02/2022',247760.84);
+(1, 2, '01011123-2', '000.000.000-02', '02@gmail.com','(42)12345-6789','ADMIN CORRENTE','Masculino','123','02/02/2022','02/02/2022',2.84);
+
+-- insert into extrato (data_transacao, tipo_transacao, valor_transacao, saldo_posterior, fk_usuario) values
+-- ('08/09/2022', "Deposito", 300, 350, 1),
+-- ('08/09/2022', "Saque", 50, 300, 1),
+-- ('08/09/2022', "Pix in", 25, 325, 1),
+-- ('08/09/2022', "Pix out", 75, 250, 1),
+-- ('08/09/2022', "Pix out", 10, 240, 1);
 
 -- PROCEDURE PARA REGISTRAR usuario
 delimiter $
@@ -81,17 +88,7 @@ delimiter ;
 
 call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',135.45);
 
-
-select usuario.*, banco.agencia from usuario, banco where cpf='000.000.000-01';
-select * from usuario where cpf='000.000.000-01';
+-- select usuario.*, banco.agencia from usuario, banco where cpf='000.000.000-01';
 select usuario.*, banco.agencia from usuario, banco;
-
-update usuario set saldo=2 where conta='01011123-1';
-
-select saldo from usuario where conta='01011123-1';
-
-
-update usuario set saldo=49 where conta='01011123-1';
-update usuario set saldo=2 where conta='01011123-2';
-
+SELECT * FROM extrato;
 

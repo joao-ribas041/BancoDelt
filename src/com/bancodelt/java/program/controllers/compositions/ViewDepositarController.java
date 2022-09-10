@@ -25,7 +25,7 @@ public class ViewDepositarController implements Initializable {
     private TextField txtFConta;
     @FXML
     private Button btnDepositar;
-    
+
     AlertWarningPrototype alertaAviso;
     AlertErrorPrototype alertaErro;
     AlertInformationPrototype alertaInforma;
@@ -38,7 +38,6 @@ public class ViewDepositarController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         MascaraTextField.mascaraConta(txtFConta);
         MascaraTextField.mascaraReal(txtFValor);
-
     }
 
     @FXML
@@ -54,35 +53,37 @@ public class ViewDepositarController implements Initializable {
                 alertaAviso = new AlertWarningPrototype("Alerta", "Campo incompleto", "Você não informou todos os dados para conta de deposito.");
             } else {
                 valorADepositar = new Double(txtFValor.getText());
-                if (Conta2.getConta().equals(txtFConta.getText())) {
-                    alertaAviso = new AlertWarningPrototype("Alerta", "Deposito pessoal.", "Você irá fazer um deposito em sua própria conta.");
-                    saldoAnterior = cDAO.contaExiste(txtFConta.getText());
-                    if (saldoAnterior != 0) {
-                        Conta2.depositar(txtFConta.getText(), valorADepositar, saldoAnterior);
-                        alertaInforma = new AlertInformationPrototype("Alerta", "Deposito efetuado", "Deposito efetuado com sucesso. ");
-                        cDAO.setTipo(Conta2.getTipo());
-                        cDAO.resgatarDadosTitular(Conta2.getCPF());
-                    } else {
-                        alertaAviso = new AlertWarningPrototype("Alerta", "Conta não existe", "Você informou uma conta inexistente.");
-                    }
+                if (valorADepositar == 0) {
+                    alertaErro = new AlertErrorPrototype("Erro", "Valor nulo", "Você não informou um valor para a transação.");
                 } else {
-                    
-                    if (valorADepositar > Conta2.getSaldo()) {
-                         alertaErro = new AlertErrorPrototype("Erro", "Saldo Insuficiente", "Você não tem saldo suficiente para a transação.");
-                    } else {
+                    if (Conta2.getConta().equals(txtFConta.getText())) {
+                        alertaAviso = new AlertWarningPrototype("Alerta", "Deposito pessoal.", "Você irá fazer um deposito em sua própria conta.");
                         saldoAnterior = cDAO.contaExiste(txtFConta.getText());
-                        if (saldoAnterior != 0) {
+                        if (ContaDAO.isContaExiste() == true) {
                             Conta2.depositar(txtFConta.getText(), valorADepositar, saldoAnterior);
-                            alertaInforma = new AlertInformationPrototype("Alerta", "Deposito efetuado", "Deposito efetuado com sucesso.");
+                            alertaInforma = new AlertInformationPrototype("Alerta", "Deposito efetuado", "Deposito efetuado com sucesso. ");
                             cDAO.setTipo(Conta2.getTipo());
-                            cDAO.resgatarDadosTitular(Conta2.getCPF());
+                            cDAO.resgatarSaldoTitular(Conta2.getCPF());
                         } else {
                             alertaAviso = new AlertWarningPrototype("Alerta", "Conta não existe", "Você informou uma conta inexistente.");
+                        }
+                    } else {
+                        if (valorADepositar > Conta2.getSaldo()) {
+                            alertaErro = new AlertErrorPrototype("Erro", "Saldo Insuficiente", "Você não tem saldo suficiente para a transação.");
+                        } else {
+                            saldoAnterior = cDAO.contaExiste(txtFConta.getText());
+                            if (ContaDAO.isContaExiste() == true) {
+                                Conta2.depositar(txtFConta.getText(), valorADepositar, saldoAnterior);
+                                alertaInforma = new AlertInformationPrototype("Alerta", "Deposito efetuado", "Deposito efetuado com sucesso.");
+                                cDAO.setTipo(Conta2.getTipo());
+                                cDAO.resgatarSaldoTitular(Conta2.getCPF());
+                            } else {
+                                alertaAviso = new AlertWarningPrototype("Alerta", "Conta não existe", "Você informou uma conta inexistente.");
+                            }
                         }
                     }
                 }
             }
         }
     }
-
 }
