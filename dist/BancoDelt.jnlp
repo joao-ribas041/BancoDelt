@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="BancoDelt.jar" size="424562" download="eager" />
+    <jar href="BancoDelt.jar" size="425781" download="eager" />
     <jar href="lib\javafx-swt.jar" size="37127" download="eager" />
     <jar href="lib\javafx.base.jar" size="745882" download="eager" />
     <jar href="lib\javafx.controls.jar" size="2544033" download="eager" />
