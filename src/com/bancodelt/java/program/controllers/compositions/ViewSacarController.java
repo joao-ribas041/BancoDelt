@@ -47,7 +47,7 @@ public class ViewSacarController implements Initializable {
             alertaAviso = new AlertWarningPrototype("Alerta", "Informe o valor", "Você não solicitou nenhum valor para saque.");
         } else {
             if (txtFValor.getText().length() < 1) {
-                alertaAviso = new AlertWarningPrototype("Alerta", "Campo incompleto", "Você não informou todos os dados para conta de deposito.");
+                alertaAviso = new AlertWarningPrototype("Alerta", "Campo incompleto", "Você não solicitou nenhum valor para saque.");
             } else {
                 valorASacar = new Double(txtFValor.getText());
                 if (valorASacar == 0) {
