@@ -144,9 +144,9 @@ public class ViewPixPagarController implements Initializable {
                                     
                                     cDAO.setTipo(Conta2.getTipo());
                                     cDAO.resgatarSaldoTitular(Conta2.getCPF());
-                                    alertaInforma = new AlertInformationPrototype("Alerta", "Pix efetuado", "Pix efetuado com sucesso." + valorPix);
+                                    alertaInforma = new AlertInformationPrototype("Alerta", "Pix efetuado", "Pix efetuado com sucesso.");
                                 } else {
-                                    alertaAviso = new AlertWarningPrototype("Alerta", "Outra conta nao possui pix", "");
+                                    alertaAviso = new AlertWarningPrototype("Alerta", "Outra conta nao possui pix", "A conta informada não possui pix.");
                                 }
                             }
                         }
