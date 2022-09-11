@@ -60,12 +60,6 @@ create table if not exists pix(
     unique key(chave_pix)
 );
 
- insert into pix(possui_pix, chave_pix, fk_usuario) values
- (true, '000.000.000-02', 2),
- (true, '000.000.000-03', 3),
- (true, '(42)12345-6789', 2),
-(true, '02@gmail.com', 2);
-
 insert into banco (agencia) values
 ('0001');
 
@@ -77,13 +71,6 @@ insert into usuario (fk_agencia, fk_tipoacc, conta, cpf, email, celular, nome_ti
 (1, 1, '01011123-1', '000.000.000-01', '01@gmail.com','(41)12345-6789','ADMIN POUPANÇA','Masculino','123','01/01/2022','01/01/2022',1.33),
 (1, 2, '01011123-2', '000.000.000-02', '02@gmail.com','(42)12345-6789','ADMIN CORRENTE','Masculino','123','02/02/2022','02/02/2022',2.84);
 
--- insert into extrato (data_transacao, tipo_transacao, valor_transacao, saldo_posterior, fk_usuario) values
--- ('08/09/2022', "Deposito", 300, 350, 1),
--- ('08/09/2022', "Saque", 50, 300, 1),
--- ('08/09/2022', "Pix in", 25, 325, 1),
--- ('08/09/2022', "Pix out", 75, 250, 1),
--- ('08/09/2022', "Pix out", 10, 240, 1);
-
 -- PROCEDURE PARA REGISTRAR usuario
 delimiter $
 create procedure registra_titular (fk_agencia int, fk_tipoacc int, conta varchar(11), cpf varchar(14), email varchar(100), celular varchar(14), nome_titular varchar(75), sexo enum('Prefiro não dizer','Masculino','Feminino'), senha text, dnascimento varchar(10), dcriacao varchar(10), saldo long)
@@ -94,9 +81,5 @@ delimiter ;
 
 call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',3.45);
 
- 
 select usuario.*, banco.agencia from usuario, banco;
 SELECT * FROM extrato;
-
-select max(id_usuario) from usuario
-
