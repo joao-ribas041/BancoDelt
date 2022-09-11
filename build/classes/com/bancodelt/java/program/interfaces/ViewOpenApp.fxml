@@ -50,7 +50,7 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <Button fx:id="btnSeguir" mnemonicParsing="false" onAction="#AcaoBtnSeguir" prefHeight="37.0" prefWidth="83.0" styleClass="bntBase" text="SEGUIR" textAlignment="CENTER">
+                        <Button fx:id="btnSeguir" mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" styleClass="bntBase" text="SEGUIR" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
