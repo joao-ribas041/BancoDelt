@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/program/controllers/compositions/ViewDepositarController.java</file>
-            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/models/Conta2.java</file>
-            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/program/controllers/compositions/ViewSacarController.java</file>
+            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/models/ContaCorrente.java</file>
+            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/program/controllers/compositions/ViewPixCadastrarController.java</file>
+            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/program/controllers/compositions/ViewPixPagarController.java</file>
+            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/models/dao/PixDAO.java</file>
+            <file>file:/C:/Users/Joao-Ribas/Documents/Dev/Estudos/BancoDelt/src/com/bancodelt/java/program/controllers/compositions/ViewExtratoController.java</file>
         </group>
     </open-files>
 </project-private>

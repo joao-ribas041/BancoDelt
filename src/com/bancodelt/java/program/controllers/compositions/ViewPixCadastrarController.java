@@ -62,26 +62,35 @@ public class ViewPixCadastrarController implements Initializable {
     private void possuiChaves() {
         if (pDAO.possuiPix(ContaCorrente.getNumConta())) {
             pDAO.resgatarChavesPix(ContaCorrente.getNumConta());
-            if (ContaCorrente.getChavesPix().equals(ContaCorrente.getCPF())) {
-                btnCadastrarCPF.setDisable(true);
-                btnCadastrarCPF.setVisible(false);
-            } else {
-                btnCadastrarCPF.setDisable(false);
-                btnCadastrarCPF.setVisible(true);
+            for (String chave : ContaCorrente.getChavesPix()) {
+                if (chave.equals(ContaCorrente.getCPF())) {
+                    btnCadastrarCPF.setDisable(true);
+                    btnCadastrarCPF.setVisible(false);
+                    break;
+                } else {
+                    btnCadastrarCPF.setDisable(false);
+                    btnCadastrarCPF.setVisible(true);
+                }
             }
-            if (ContaCorrente.getChavesPix().equals(ContaCorrente.getNumeroCelular())) {
-                btnCadastrarNumero.setDisable(true);
-                btnCadastrarNumero.setVisible(false);
-            } else {
-                btnCadastrarNumero.setDisable(false);
-                btnCadastrarNumero.setVisible(true);
+            for (String chave : ContaCorrente.getChavesPix()) {
+                if (chave.equals(ContaCorrente.getNumeroCelular())) {
+                    btnCadastrarNumero.setDisable(true);
+                    btnCadastrarNumero.setVisible(false);
+                    break;
+                } else {
+                    btnCadastrarNumero.setDisable(false);
+                    btnCadastrarNumero.setVisible(true);
+                }
             }
-            if (ContaCorrente.getChavesPix().equals(ContaCorrente.getEmail())) {
-                btnCadastrarEmail.setDisable(true);
-                btnCadastrarEmail.setVisible(false);
-            } else {
-                btnCadastrarEmail.setDisable(false);
-                btnCadastrarEmail.setVisible(true);
+            for (String chave : ContaCorrente.getChavesPix()) {
+                if (chave.equals(ContaCorrente.getEmail())) {
+                    btnCadastrarEmail.setDisable(true);
+                    btnCadastrarEmail.setVisible(false);
+                    break;
+                } else {
+                    btnCadastrarEmail.setDisable(false);
+                    btnCadastrarEmail.setVisible(true);
+                }
             }
         } else {
             System.out.println("\n\n\nEle não possui pix.");
@@ -118,10 +127,10 @@ public class ViewPixCadastrarController implements Initializable {
                 }
             });
         }
-        
+
         if (!btnCadastrarEmail.isDisable()) {
             btnCadastrarEmail.setOnMouseClicked((event) -> {
-                if(pDAO.CadastrarPix(txtFEmail.getText(), ContaCorrente.getNumConta())) {
+                if (pDAO.CadastrarPix(txtFEmail.getText(), ContaCorrente.getNumConta())) {
                     alertaInforma = new AlertInformationPrototype("Alerta", "Cadastrado com sucesso", "Chave pix cadastrada com sucesso.");
                     btnCadastrarEmail.setDisable(true);
                     btnCadastrarEmail.setVisible(false);

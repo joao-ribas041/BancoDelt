@@ -66,12 +66,6 @@ create table if not exists pix(
  (true, '(42)12345-6789', 2),
 (true, '02@gmail.com', 2);
 
-select possui_pix from pix where fk_usuario = 3;
-select possui_pix, fk_usuario from pix where chave_pix ='02@gmail.com';
-select chave_pix from pix where fk_usuario=2;
-
-
-
 insert into banco (agencia) values
 ('0001');
 
@@ -98,9 +92,11 @@ begin
 end $
 delimiter ;
 
-call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',135.45);
+call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',3.45);
 
  
 select usuario.*, banco.agencia from usuario, banco;
 SELECT * FROM extrato;
+
+select max(id_usuario) from usuario
 

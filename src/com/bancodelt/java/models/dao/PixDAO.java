@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,8 +16,11 @@ public class PixDAO {
     private Connection conexao = null;
     private PreparedStatement pst = null;
     private ResultSet rs = null;
-    
+
     private static int outraContaPix = 0;
+    private static double valorAnterior = 0;
+
+    private static List<String> listaChaves = new ArrayList<>();
 
     public boolean possuiPix(int conta) {
         conexao = DBAcess.getConexao();
@@ -48,7 +53,7 @@ public class PixDAO {
             return false;
         }
     }
-    
+
     public boolean possuiPixOutraConta(String chave) {
         conexao = DBAcess.getConexao();
         String sql = "select possui_pix, fk_usuario from pix where chave_pix=?;";
@@ -59,12 +64,19 @@ public class PixDAO {
             if (rs.next()) {
                 if (rs.getBoolean(1)) {
                     setOutraContaPix(rs.getInt(2));
-                    System.out.println("\n\nValor pix de tabela:" + rs.getBoolean(1));
                     System.out.println("\nPossui pix.");
+                    DBAcess.closeConexao(conexao, pst, rs);
+                    conexao = DBAcess.getConexao();
+                    sql = "select saldo from usuario where id_usuario=?;";
+                    pst = conexao.prepareStatement(sql);
+                    pst.setInt(1, getOutraContaPix());
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        setValorAnterior(rs.getDouble(1));
+                    }
                     DBAcess.closeConexao(conexao, pst, rs);
                     return true;
                 } else {
-                    System.out.println("\n\nValor pix de tabela:" + rs.getBoolean(1));
                     System.out.println("\nNão possui pix.");
                     DBAcess.closeConexao(conexao, pst, rs);
                     return false;
@@ -117,16 +129,14 @@ public class PixDAO {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, conta);
             rs = pst.executeQuery();
-            if (rs.next()) {
-                ContaCorrente.setChavesPix(rs.getString(1));
+            while (rs.next()) {
+                String chaveRecebida = rs.getString(1);
+                listaChaves.add(chaveRecebida);
                 System.out.println("\nSucesso ao resgatar chaves pix.");
-                DBAcess.closeConexao(conexao, pst, rs);
-                return true;
-            } else {
-                DBAcess.closeConexao(conexao, pst, rs);
-                System.out.println("\nErro ao resgatar chaves pix.");
-                return false;
             }
+            ContaCorrente.setChavesPix(getListaChaves());
+            DBAcess.closeConexao(conexao, pst, rs);
+            return true;
         } catch (SQLException e) {
             Logger.getLogger(PixDAO.class.getName()).log(Level.SEVERE, null, e);
             System.out.println("Erro SQL Exception GESTOR");
@@ -134,9 +144,8 @@ public class PixDAO {
             return false;
         }
     }
-    
-    
-    public void fazerPix(String contaOrigem, int contaDestino, double saldoOrigem, double valorDestino) {
+
+    public boolean fazerPix(String contaOrigem, int contaDestino, double saldoOrigem, double valorDestino) {
         conexao = DBAcess.getConexao();
         String sql = "update usuario set saldo=? where conta=?;";
         try {
@@ -164,21 +173,38 @@ public class PixDAO {
             add = pst.executeUpdate();
             if (add > 0) {
                 System.out.println("Pix efetuado com sucesso");
+                DBAcess.closeConexao(conexao, pst);
+                return true;
             } else {
                 System.out.println("Pix não efetuado.");
+                DBAcess.closeConexao(conexao, pst);
+                return false;
             }
-            DBAcess.closeConexao(conexao, pst);
 
         } catch (SQLException e) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
             DBAcess.closeConexao(conexao, pst);
+            return false;
         }
     }
 
     public static int getOutraContaPix() {
         return outraContaPix;
     }
+
     public static void setOutraContaPix(int outraContaPix) {
         PixDAO.outraContaPix = outraContaPix;
+    }
+
+    public static double getValorAnterior() {
+        return valorAnterior;
+    }
+
+    public static void setValorAnterior(double valorAnterior) {
+        PixDAO.valorAnterior = valorAnterior;
+    }
+
+    public static List<String> getListaChaves() {
+        return listaChaves;
     }
 }

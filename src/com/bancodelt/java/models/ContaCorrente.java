@@ -3,10 +3,13 @@ package com.bancodelt.java.models;
 import com.bancodelt.java.models.dao.ContaDAO;
 import com.bancodelt.java.models.dao.ExtratoDAO;
 import com.bancodelt.java.models.dao.PixDAO;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContaCorrente extends Conta2 {
 
-    protected static String chavesPix;
+    //protected static String chavesPix;
+    private static List<String> chavesPix = new ArrayList<>();
 
     public ContaCorrente(int numAgencia, int numConta, String CPF, String email, String numeroCelular, String nomeTitular, String generoTitular, String senhaTitular, String dataNascimento, String dataCriacaoAcc, double saldo) {
         this.numAgencia = numAgencia;
@@ -35,17 +38,24 @@ public class ContaCorrente extends Conta2 {
         PixDAO pDAO = new PixDAO();
         ExtratoDAO eDAO = new ExtratoDAO();
         
-        pDAO.fazerPix(getConta(), PixDAO.getOutraContaPix(), getSaldo() - valor, saldoAnterior + valor);
-        
-        
-
+        pDAO.fazerPix(getConta(), PixDAO.getOutraContaPix(), Conta2.getSaldo() - valor, saldoAnterior + valor);
+        eDAO.RegistrarExtrato("Pix out", valor, getSaldo() - valor, getNumConta());
+        eDAO.RegistrarExtrato("Pix in", valor, saldoAnterior + valor, conta);
     }
 
-    public static String getChavesPix() {
+    /*public static String getChavesPix() {
         return chavesPix;
     }
 
     public static void setChavesPix(String chavesPix) {
         ContaCorrente.chavesPix = chavesPix;
+    }*/
+
+    public static void setChavesPix(List<String> chavesPix) {
+        ContaCorrente.chavesPix = chavesPix;
+    }
+
+    public static List<String> getChavesPix() {
+        return chavesPix;
     }
 }

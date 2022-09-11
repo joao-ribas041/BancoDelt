@@ -1,11 +1,13 @@
 package com.bancodelt.java.program.controllers.compositions;
 
 import com.bancodelt.java.config.MascaraTextField;
+import com.bancodelt.java.models.Conta2;
 import com.bancodelt.java.models.ContaCorrente;
 import com.bancodelt.java.models.EstiloAcc;
 import com.bancodelt.java.models.alerts.AlertErrorPrototype;
 import com.bancodelt.java.models.alerts.AlertInformationPrototype;
 import com.bancodelt.java.models.alerts.AlertWarningPrototype;
+import com.bancodelt.java.models.dao.ContaDAO;
 import com.bancodelt.java.models.dao.PixDAO;
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,9 +53,11 @@ public class ViewPixPagarController implements Initializable {
     private double saldoAnterior = 0;
 
     PixDAO pDAO = new PixDAO();
+    ContaDAO cDAO = new ContaDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        MascaraTextField.mascaraReal(txtFValor);
         iniciarChavesPix();
         checksCBPix();
         hboxValor.setDisable(true);
@@ -62,7 +66,6 @@ public class ViewPixPagarController implements Initializable {
         hboxChave.setVisible(false);
         btnPAGARPIX.setDisable(true);
         btnPAGARPIX.setVisible(false);
-        MascaraTextField.mascaraReal(txtFValor);
     }
 
     @FXML
@@ -123,7 +126,7 @@ public class ViewPixPagarController implements Initializable {
                 if (txtFChave.getText().length() < 1 || txtFValor.getText().length() < 1) {
                     alertaAviso = new AlertWarningPrototype("Alerta", "Campo incompleto", "Você não informou todos os dados da chave pix ou valor.");
                 } else {
-                    valorPix = new Double(txtFValor.getText());
+                    setValorPix(new Double(txtFValor.getText()));
                     if (valorPix == 0) {
                         alertaErro = new AlertErrorPrototype("Erro", "Valor nulo", "Você não informou um valor para a transação.");
                     } else {
@@ -136,7 +139,12 @@ public class ViewPixPagarController implements Initializable {
                                 alertaErro = new AlertErrorPrototype("Erro", "Chave pix", "Você não pode fazer um pix para si mesmo.");
                             } else {
                                 if (pDAO.possuiPixOutraConta(txtFChave.getText())) {
+                                    saldoAnterior = PixDAO.getValorAnterior();
                                     ContaCorrente.pagarPix(PixDAO.getOutraContaPix(), valorPix, saldoAnterior);
+                                    
+                                    cDAO.setTipo(Conta2.getTipo());
+                                    cDAO.resgatarSaldoTitular(Conta2.getCPF());
+                                    alertaInforma = new AlertInformationPrototype("Alerta", "Pix efetuado", "Pix efetuado com sucesso." + valorPix);
                                 } else {
                                     alertaAviso = new AlertWarningPrototype("Alerta", "Outra conta nao possui pix", "");
                                 }
@@ -162,4 +170,11 @@ public class ViewPixPagarController implements Initializable {
         cbEstiloChave.setItems(obsEstiloChavesPix);
     }
 
+    public double getValorPix() {
+        return valorPix;
+    }
+
+    public void setValorPix(double valorPix) {
+        this.valorPix = valorPix;
+    }
 }
