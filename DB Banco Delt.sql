@@ -51,14 +51,26 @@ create table if not exists extrato(
     primary key (id_extrato)
 );
 
--- um usuario pode ter varias chaves pix
 create table if not exists pix(
-	id_pix int not null auto_increment,
+	id_pix int unsigned not null auto_increment,
+    possui_pix boolean not null,
     chave_pix varchar(30),
-    fk_usuario int references usuario(id_usuario),
+	fk_usuario int not null references usuario(id_usuario),
     primary key (id_pix),
-    unique key (chave_pix)
+    unique key(chave_pix)
 );
+
+ insert into pix(possui_pix, chave_pix, fk_usuario) values
+ (true, '000.000.000-02', 2),
+ (true, '000.000.000-03', 3),
+ (true, '(42)12345-6789', 2),
+(true, '02@gmail.com', 2);
+
+select possui_pix from pix where fk_usuario = 3;
+select possui_pix, fk_usuario from pix where chave_pix ='02@gmail.com';
+select chave_pix from pix where fk_usuario=2;
+
+
 
 insert into banco (agencia) values
 ('0001');
@@ -88,7 +100,7 @@ delimiter ;
 
 call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43)12345-6789','ADMIN procedure call','Masculino','1234','01/01/2022','01/01/2022',135.45);
 
--- select usuario.*, banco.agencia from usuario, banco where cpf='000.000.000-01';
+ 
 select usuario.*, banco.agencia from usuario, banco;
 SELECT * FROM extrato;
 
