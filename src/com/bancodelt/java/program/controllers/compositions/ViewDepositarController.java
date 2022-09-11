@@ -33,6 +33,7 @@ public class ViewDepositarController implements Initializable {
     private double saldoAnterior = 0;
 
     ContaDAO cDAO = new ContaDAO();
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

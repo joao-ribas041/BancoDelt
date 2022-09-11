@@ -43,14 +43,6 @@ public class ContaCorrente extends Conta2 {
         eDAO.RegistrarExtrato("Pix in", valor, saldoAnterior + valor, conta);
     }
 
-    /*public static String getChavesPix() {
-        return chavesPix;
-    }
-
-    public static void setChavesPix(String chavesPix) {
-        ContaCorrente.chavesPix = chavesPix;
-    }*/
-
     public static void setChavesPix(List<String> chavesPix) {
         ContaCorrente.chavesPix = chavesPix;
     }
