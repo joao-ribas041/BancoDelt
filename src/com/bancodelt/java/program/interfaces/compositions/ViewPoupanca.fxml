@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="920.0" styleClass="lblBase2" stylesheets="@../../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewPoupancaController">
+<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="920.0" styleClass="fpButton" stylesheets="@../../../../resources/css/App.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodelt.java.program.controllers.compositions.ViewPoupancaController">
    <children>
       <FlowPane fx:id="Titulo" alignment="CENTER" hgap="15.0" prefHeight="92.0" prefWidth="710.0" vgap="5.0">
          <children>
@@ -16,5 +20,48 @@
             </Label>
          </children>
       </FlowPane>
+      <FlowPane alignment="CENTER" prefHeight="600.0" prefWidth="920.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="302.0" prefWidth="738.0" spacing="30.0">
+               <children>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="80.0" prefWidth="368.0" text="SALDO:">
+                           <font>
+                              <Font name="System Bold" size="50.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtFSaldo" editable="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" promptText="0,00" styleClass="txtFBase2">
+                           <font>
+                              <Font name="System Bold" size="40.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="87.0" prefWidth="663.0" spacing="5.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="80.0" prefWidth="937.0" text="TAXA DE CORREÇÃO:">
+                           <font>
+                              <Font name="System Bold" size="50.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtFCorrecao" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" promptText="0%" styleClass="txtFBase2">
+                           <font>
+                              <Font name="System Bold" size="40.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnPoupanca" mnemonicParsing="false" styleClass="bntBase" text="APLICAR TAXA">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children></FlowPane>
    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </FlowPane>
