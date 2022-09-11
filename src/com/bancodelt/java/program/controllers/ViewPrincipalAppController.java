@@ -120,6 +120,7 @@ public class ViewPrincipalAppController implements Initializable {
     }
     @FXML
     private void btnDeslogarAction(ActionEvent event) {
+        limparDadosLogin();
         Main.getProgram().close();
         try {
             m.switchTelas(new Stage(), "ViewOpenApp.fxml");
@@ -264,5 +265,22 @@ public class ViewPrincipalAppController implements Initializable {
             Logger.getLogger(ViewPrincipalAppController.class.getName()).log(Level.SEVERE, null, ex);
         }
         TelaPrincipal.setCenter(root);
+    }
+    
+    private void limparDadosLogin(){
+        Conta2.setNumAgencia(0);
+        Conta2.setNumConta(0);
+        Conta2.setTipo(0);
+        Conta2.setAgencia("");
+        Conta2.setConta("");
+        Conta2.setCPF("");
+        Conta2.setEmail("");
+        Conta2.setNumeroCelular("");
+        Conta2.setNomeTitular("");
+        Conta2.setGeneroTitular("");
+        Conta2.setSenhaTitular("");
+        Conta2.setDataNascimento("");
+        Conta2.setDataCriacaoAcc("");
+        Conta2.setSaldo(0);
     }
 }

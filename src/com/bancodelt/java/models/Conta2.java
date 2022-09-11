@@ -1,6 +1,7 @@
 package com.bancodelt.java.models;
 
 import com.bancodelt.java.models.dao.ContaDAO;
+import com.bancodelt.java.models.dao.ExtratoDAO;
 
 public abstract class Conta2 {
 
@@ -23,17 +24,23 @@ public abstract class Conta2 {
 
     public static void depositar(String conta, double valor, double saldoAnterior) {
         ContaDAO cDAO = new ContaDAO();
+        ExtratoDAO eDAO = new ExtratoDAO();
+        
         if (getConta().equals(conta)) {
             cDAO.atualizarSaldoPessoal(conta, valor + saldoAnterior);
+            eDAO.RegistrarExtrato("Deposito In", valor, valor + saldoAnterior, ContaDAO.getIdConta());
         } else {
-            System.out.println("\n\n\nConta Diferente");
             cDAO.atualizarSaldoDepositoExtrangeiro(getConta(), conta, getSaldo() - valor, saldoAnterior + valor);
+            eDAO.RegistrarExtrato("Deposito Out", valor, getSaldo() - valor, getNumConta());
+            eDAO.RegistrarExtrato("Deposito In", valor, saldoAnterior + valor, ContaDAO.getIdConta());
         }
     }
 
     public static void sacar(String conta, double valor, double saldoAnterior) {
         ContaDAO cDAO = new ContaDAO();
+        ExtratoDAO eDAO = new ExtratoDAO();
         cDAO.atualizarSaldoPessoal(conta, saldoAnterior - valor);
+        eDAO.RegistrarExtrato("Saque", valor, saldoAnterior - valor, ContaDAO.getIdConta());
     }
 
     public static int getNumAgencia() {

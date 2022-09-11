@@ -20,9 +20,12 @@
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="600.0" prefWidth="920.0">
          <children>
-            <ScrollPane prefHeight="450.0" prefWidth="450.0" style="-fx-background-color: transparent;">
+            <ScrollPane prefHeight="450.0" prefWidth="525.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox fx:id="extratoPainel" alignment="CENTER" prefHeight="450.0" prefWidth="434.0" spacing="30.0" />
+                  <VBox fx:id="extratoPainel" alignment="TOP_RIGHT" prefHeight="450.0" prefWidth="500.0" spacing="5.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></VBox>
                </content>
             </ScrollPane>
          </children></FlowPane>

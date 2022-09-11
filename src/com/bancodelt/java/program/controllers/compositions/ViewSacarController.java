@@ -47,20 +47,24 @@ public class ViewSacarController implements Initializable {
             alertaAviso = new AlertWarningPrototype("Alerta", "Informe o valor", "Você não solicitou nenhum valor para saque.");
         } else {
             if (txtFValor.getText().length() < 1) {
-                alertaAviso = new AlertWarningPrototype("Alerta", "Campo incompleto", "Você não informou todos os dados para conta de deposito.");
+                alertaAviso = new AlertWarningPrototype("Alerta", "Campo incompleto", "Você não solicitou nenhum valor para saque.");
             } else {
                 valorASacar = new Double(txtFValor.getText());
-                if (Conta2.getSaldo() < valorASacar) {
-                    alertaErro = new AlertErrorPrototype("Erro", "Saldo Insuficiente", "Você não tem saldo suficiente para a transação.");
+                if (valorASacar == 0) {
+                    alertaErro = new AlertErrorPrototype("Erro", "Valor nulo", "Você não informou um valor para a transação.");
                 } else {
-                    saldoAnterior = cDAO.contaExiste(Conta2.getConta());
-                    if (saldoAnterior != 0) {
-                        Conta2.sacar(Conta2.getConta(), valorASacar, saldoAnterior);
-                        alertaInforma = new AlertInformationPrototype("Alerta", "Saque efetuado", "Saque efetuado com sucesso.");
-                        cDAO.setTipo(Conta2.getTipo());
-                        cDAO.resgatarDadosTitular(Conta2.getCPF());
+                    if (Conta2.getSaldo() < valorASacar) {
+                        alertaErro = new AlertErrorPrototype("Erro", "Saldo Insuficiente", "Você não tem saldo suficiente para a transação.");
                     } else {
-                        alertaAviso = new AlertWarningPrototype("Alerta", "Conta não existe", "Erro de sistema.");
+                        saldoAnterior = cDAO.contaExiste(Conta2.getConta());
+                        if (ContaDAO.isContaExiste() == true) {
+                            Conta2.sacar(Conta2.getConta(), valorASacar, saldoAnterior);
+                            alertaInforma = new AlertInformationPrototype("Alerta", "Saque efetuado", "Saque efetuado com sucesso.");
+                            cDAO.setTipo(Conta2.getTipo());
+                            cDAO.resgatarSaldoTitular(Conta2.getCPF());
+                        } else {
+                            alertaAviso = new AlertWarningPrototype("Alerta", "Conta não existe", "Erro de sistema.");
+                        }
                     }
                 }
             }
