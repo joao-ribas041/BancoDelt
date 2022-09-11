@@ -1,5 +1,6 @@
 package com.bancodelt.java.program.controllers;
 
+import com.bancodelt.java.config.FixarConta;
 import com.bancodelt.java.config.MascaraTextField;
 import com.bancodelt.java.config.VerificaCPF;
 import com.bancodelt.java.models.alerts.AlertWarningPrototype;
@@ -37,8 +38,7 @@ public class ViewOpenAppController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MascaraTextField.mascaraCPF(txtFCPF);
-
-        // validar cpf antes de executar os metodos
+        
         txtFCPF.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.ENTER) {
                 try {

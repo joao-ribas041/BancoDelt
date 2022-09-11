@@ -1,6 +1,7 @@
 package com.bancodelt.java.models.dao;
 
 import com.bancodelt.java.config.DBAcess;
+import com.bancodelt.java.config.FixarConta;
 import com.bancodelt.java.models.ContaCorrente;
 import com.bancodelt.java.models.ContaPoupanca;
 import java.sql.Connection;
@@ -106,7 +107,45 @@ public class ContaDAO {
             return false;
         }
     }
-
+    
+    public boolean fixarContaUsuario(String conta, String cpf){
+        conexao = DBAcess.getConexao();
+        String sql = "select id_usuario from usuario where cpf=?;";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, cpf);
+            rs = pst.executeQuery();
+            if(rs.next()){
+                idConta = rs.getInt(1);
+                DBAcess.closeConexao(conexao, pst, rs);
+            }
+            
+            FixarConta fc = new FixarConta("01011123" + String.valueOf(idConta));
+            
+            conexao =DBAcess.getConexao();
+            sql = "update usuario set conta=? where id_usuario=?;";
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, fc.getConta(true));
+            pst.setInt(2, idConta);
+            
+            int add = pst.executeUpdate();
+            if (add > 0) {
+                System.out.println("Conta fixada com sucesso.");
+                DBAcess.closeConexao(conexao, pst);
+                return true;
+            } else {
+                System.out.println("Conta não fixada.");
+                DBAcess.closeConexao(conexao, pst);
+                return false;
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBAcess.closeConexao(conexao, pst);
+            return false;
+        }
+        
+    }
+    
     public void resgatarDadosTitular(String CPF) {
         conexao = DBAcess.getConexao();
         String sql = "select usuario.*, banco.agencia from usuario, banco where cpf=?;";

@@ -83,3 +83,4 @@ call registra_titular (1, 1, '01011123-3', '000.000.000-03', '03@gmail.com','(43
 
 select usuario.*, banco.agencia from usuario, banco;
 SELECT * FROM extrato;
+

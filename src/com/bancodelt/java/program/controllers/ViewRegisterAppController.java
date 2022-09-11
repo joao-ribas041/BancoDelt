@@ -161,7 +161,12 @@ public class ViewRegisterAppController implements Initializable {
                                                     System.out.println("Tipo: " + tipo);
 
                                                     if (cDAO.CadastrarTitular(numAgencia, tipo, Conta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo) == true) {
-                                                        Seguir();
+                                                        if(cDAO.fixarContaUsuario(Conta, CPF) == true) {
+                                                            Seguir();
+                                                        } else {
+                                                            System.out.println("Erro ao fixar conta.");
+                                                        }
+                                                        
                                                     } else {
                                                         System.out.println("Erro ao cadastrar conta.");
                                                     }
