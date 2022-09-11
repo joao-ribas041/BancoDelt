@@ -3,6 +3,7 @@ package com.bancodelt.java.program.controllers;
 import com.bancodelt.java.config.DBAcess;
 import com.bancodelt.java.models.EstiloAcc;
 import com.bancodelt.java.config.MascaraTextField;
+import com.bancodelt.java.config.VerificaCPF;
 import com.bancodelt.java.models.alerts.AlertWarningPrototype;
 import com.bancodelt.java.models.dao.ContaDAO;
 import com.bancodelt.java.program.Main;
@@ -71,6 +72,7 @@ public class ViewRegisterAppController implements Initializable {
     LocalDateTime dataAtual = LocalDateTime.now();
 
     Main m = new Main();
+    VerificaCPF vCPF;
     ViewOpenAppController voac = new ViewOpenAppController();
     AlertWarningPrototype alertaAviso;
 
@@ -108,78 +110,85 @@ public class ViewRegisterAppController implements Initializable {
 
     private void CheckVariaveis() throws IOException {
         setCPF(txtFCPF.getText());
-        if (txtFEmail.getText().isEmpty()) {
-            alertaAviso = new AlertWarningPrototype("Alerta", "Informe o E-mail!", "O campo E-mail está vazio, por favor informe-o.");
-        } else {
-            if (txtFEmail.getText().contains("@") && txtFEmail.getText().contains(".com")) {
-                email = txtFEmail.getText();
-                if (txtFnumeroTelefone.getText().isEmpty()) {
-                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu numero", "O campo numero de telefone está vazio, por favor informe-o.");
-                } else {
-                    numeroCelular = txtFnumeroTelefone.getText();
-                    if (txtFNome.getText().isEmpty()) {
-                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu nome", "O campo nome está vazio, por favor informe-o.");
+        vCPF = new VerificaCPF(txtFCPF.getText());
+        if (vCPF.isCPF()) {
+            if (txtFEmail.getText().isEmpty()) {
+                alertaAviso = new AlertWarningPrototype("Alerta", "Informe o E-mail!", "O campo E-mail está vazio, por favor informe-o.");
+            } else {
+                if (txtFEmail.getText().contains("@") && txtFEmail.getText().contains(".com")) {
+                    email = txtFEmail.getText();
+                    if (txtFnumeroTelefone.getText().isEmpty()) {
+                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu numero", "O campo numero de telefone está vazio, por favor informe-o.");
                     } else {
-                        if (txtFNome.getText().length() < 3 || txtFNome.getText().length() >= 50) {
-                            alertaAviso = new AlertWarningPrototype("Alerta", "Nome invalido", "O nome informado é invalido, por favor informe um nome legitmo.");
+                        numeroCelular = txtFnumeroTelefone.getText();
+                        if (txtFNome.getText().isEmpty()) {
+                            alertaAviso = new AlertWarningPrototype("Alerta", "Informe o seu nome", "O campo nome está vazio, por favor informe-o.");
                         } else {
-                            nomeTitular = txtFNome.getText();
-                            if (dpNascimento.getValue() != null) {
-                                // logica para verificar se é maior que 18 anos
-                                dataNascimento = dpNascimento.getValue().format(dtf);
-                                dataCriacaoAcc = dtf.format(dataAtual);
+                            if (txtFNome.getText().length() < 3 || txtFNome.getText().length() >= 50) {
+                                alertaAviso = new AlertWarningPrototype("Alerta", "Nome invalido", "O nome informado é invalido, por favor informe um nome legitmo.");
+                            } else {
+                                nomeTitular = txtFNome.getText();
+                                if (dpNascimento.getValue() != null) {
+                                    // logica para verificar se é maior que 18 anos
+                                    dataNascimento = dpNascimento.getValue().format(dtf);
+                                    dataCriacaoAcc = dtf.format(dataAtual);
 
-                                if (cbGenero.getValue() != null) {
-                                    generoTitular = cbGenero.getValue().getEstilo();
-                                    if (txtFSenha.getText().isEmpty() || txtFConfirmSenha.getText().isEmpty()) {
-                                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe a senha", "O campo senha está vazio, por favor informe-o.");
-                                    } else {
-                                        if (txtFSenha.getText().equals(txtFConfirmSenha.getText())) {
-                                            senhaTitular = txtFSenha.getText();
-                                            if (cbEstiloDaConta.getValue() != null) {
-                                                saldo = 0;
-                                                tipo = cbEstiloDaConta.getValue().getId();
-                                                Conta = "01000000-0";
-                                                System.out.println("");
-                                                System.out.println("Conta corrente");
-                                                System.out.println("");
-                                                System.out.println("Numero agencia: " + numAgencia);
-                                                System.out.println("Numero conta: " + Conta);
-                                                System.out.println("CPF: " + CPF);
-                                                System.out.println("E-mail: " + email);
-                                                System.out.println("Numero Celular: " + numeroCelular);
-                                                System.out.println("Nome Titular: " + nomeTitular);
-                                                System.out.println("Genero: " + generoTitular);
-                                                System.out.println("Senha Titular: " + senhaTitular);
-                                                System.out.println("Data nascimento: " + dataNascimento);
-                                                System.out.println("Data Criacão: " + dataCriacaoAcc);
-                                                System.out.println("Saldo: " + saldo);
-                                                System.out.println("Tipo: " + tipo);
+                                    if (cbGenero.getValue() != null) {
+                                        generoTitular = cbGenero.getValue().getEstilo();
+                                        if (txtFSenha.getText().isEmpty() || txtFConfirmSenha.getText().isEmpty()) {
+                                            alertaAviso = new AlertWarningPrototype("Alerta", "Informe a senha", "O campo senha está vazio, por favor informe-o.");
+                                        } else {
+                                            if (txtFSenha.getText().equals(txtFConfirmSenha.getText())) {
+                                                senhaTitular = txtFSenha.getText();
+                                                if (cbEstiloDaConta.getValue() != null) {
+                                                    saldo = 0;
+                                                    tipo = cbEstiloDaConta.getValue().getId();
+                                                    Conta = "01000000-0";
+                                                    System.out.println("");
+                                                    System.out.println("Conta corrente");
+                                                    System.out.println("");
+                                                    System.out.println("Numero agencia: " + numAgencia);
+                                                    System.out.println("Numero conta: " + Conta);
+                                                    System.out.println("CPF: " + CPF);
+                                                    System.out.println("E-mail: " + email);
+                                                    System.out.println("Numero Celular: " + numeroCelular);
+                                                    System.out.println("Nome Titular: " + nomeTitular);
+                                                    System.out.println("Genero: " + generoTitular);
+                                                    System.out.println("Senha Titular: " + senhaTitular);
+                                                    System.out.println("Data nascimento: " + dataNascimento);
+                                                    System.out.println("Data Criacão: " + dataCriacaoAcc);
+                                                    System.out.println("Saldo: " + saldo);
+                                                    System.out.println("Tipo: " + tipo);
 
-                                                if (cDAO.CadastrarTitular(numAgencia, tipo, Conta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo) == true) {
-                                                    Seguir();
+                                                    if (cDAO.CadastrarTitular(numAgencia, tipo, Conta, CPF, email, numeroCelular, nomeTitular, generoTitular, senhaTitular, dataNascimento, dataCriacaoAcc, saldo) == true) {
+                                                        Seguir();
+                                                    } else {
+                                                        System.out.println("Erro ao cadastrar conta.");
+                                                    }
                                                 } else {
-                                                    System.out.println("Erro ao cadastrar conta.");
+                                                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o estilo da conta", "Você não escolheu o estilo da conta, por favor informe-o.");
                                                 }
                                             } else {
-                                                alertaAviso = new AlertWarningPrototype("Alerta", "Informe o estilo da conta", "Você não escolheu o estilo da conta, por favor informe-o.");
+                                                alertaAviso = new AlertWarningPrototype("Alerta", "Senhas diferentes", "As senhas informadas são diferentes, por favor confirme sua senha.");
                                             }
-                                        } else {
-                                            alertaAviso = new AlertWarningPrototype("Alerta", "Senhas diferentes", "As senhas informadas são diferentes, por favor confirme sua senha.");
                                         }
+                                    } else {
+                                        alertaAviso = new AlertWarningPrototype("Alerta", "Informe o genero", "Você não escolheu o genero, por favor informe-o.");
                                     }
                                 } else {
-                                    alertaAviso = new AlertWarningPrototype("Alerta", "Informe o genero", "Você não escolheu o genero, por favor informe-o.");
+                                    alertaAviso = new AlertWarningPrototype("Alerta", "Data invalida", "A data informada é invalido, por favor informe uma data legitma.");
                                 }
-                            } else {
-                                alertaAviso = new AlertWarningPrototype("Alerta", "Data invalida", "A data informada é invalido, por favor informe uma data legitma.");
                             }
                         }
                     }
+                } else {
+                    alertaAviso = new AlertWarningPrototype("Alerta", "E-mail invalido.", "O campo E-mail é invalido, por favor informe um E-mail legitmo.");
                 }
-            } else {
-                alertaAviso = new AlertWarningPrototype("Alerta", "E-mail invalido.", "O campo E-mail é invalido, por favor informe um E-mail legitmo.");
             }
+        } else {
+            alertaAviso = new AlertWarningPrototype("Alerta", "Cpf Invalido!", "O CPF informado é invalido, por favor informe um CPF legitimo.");
+            Main.getProgram().close();
+            m.switchTelas(new Stage(), "ViewOpenApp.fxml");
         }
     }
 
