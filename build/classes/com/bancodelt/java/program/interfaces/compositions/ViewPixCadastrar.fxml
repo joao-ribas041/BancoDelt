@@ -33,7 +33,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFCPF" prefHeight="54.0" prefWidth="609.0" styleClass="txtFBase2">
+                  <TextField fx:id="txtFCPF" editable="false" prefHeight="54.0" prefWidth="609.0" styleClass="txtFBase2">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -52,7 +52,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFNumeroTel" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase2">
+                  <TextField fx:id="txtFNumeroTel" editable="false" prefHeight="28.0" prefWidth="173.0" styleClass="txtFBase2">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFEmail" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase2">
+                  <TextField fx:id="txtFEmail" editable="false" prefHeight="26.0" prefWidth="301.0" styleClass="txtFBase2">
                      <font>
                         <Font size="25.0" />
                      </font>

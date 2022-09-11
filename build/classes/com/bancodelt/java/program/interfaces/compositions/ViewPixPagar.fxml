@@ -23,17 +23,17 @@
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="600.0" prefWidth="920.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="355.0" prefWidth="702.0" spacing="30.0">
+            <VBox alignment="CENTER" prefHeight="355.0" prefWidth="794.0" spacing="30.0">
                <children>
-                  <ComboBox prefHeight="28.0" prefWidth="222.0" promptText="Selecione a CHAVE" styleClass="txtFBase" />
-                  <HBox alignment="CENTER" spacing="5.0">
+                  <ComboBox fx:id="cbEstiloChave" prefHeight="28.0" prefWidth="222.0" promptText="Selecione a CHAVE" styleClass="txtFBase" />
+                  <HBox fx:id="hboxValor" alignment="CENTER" spacing="5.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="80.0" prefWidth="135.0" text="R$">
                            <font>
                               <Font name="System Bold" size="50.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtFValor" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" promptText="0,00" styleClass="txtFBase2">
+                        <TextField fx:id="txtFValor" alignment="CENTER_RIGHT" prefHeight="87.0" prefWidth="520.0" promptText="0,00" styleClass="txtFBase2">
                            <font>
                               <Font name="System Bold" size="40.0" />
                            </font>
@@ -47,7 +47,7 @@
                               <Font name="System Bold" size="50.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtFChave" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" promptText="Digite a chave aqui" styleClass="txtFBase2">
+                        <TextField fx:id="txtFChave" alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="520.0" promptText="Digite a chave aqui" styleClass="txtFBase2">
                            <font>
                               <Font name="System Bold" size="38.0" />
                            </font>
