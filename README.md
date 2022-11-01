@@ -28,7 +28,7 @@ Banco Delt é um projeto de estudo sobre um banco fictício onde a aplicação c
 - CSS
 
 ## Banco de dados
-- Postgresql
+- MySQL
 
 # Autor
 
