@@ -17,6 +17,10 @@ Banco Delt é um projeto de estudo sobre um banco fictício onde a aplicação c
 
 ![App 2](https://github.com/joao-ribas041/BancoDelt/blob/main/assets/Conta-Corrente.png)
 
+
+## Proposta do trabalho:
+![Proposta.pdf](https://github.com/joao-ribas041/BancoDelt/blob/main/DOCS/Trab2_BancoDELT.pdf)
+
 # Tecnologias utilizadas
 ## Back end
 - Java
